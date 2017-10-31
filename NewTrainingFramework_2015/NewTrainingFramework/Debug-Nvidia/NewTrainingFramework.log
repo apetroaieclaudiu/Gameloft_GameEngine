@@ -1,0 +1,7 @@
+﻿  NewTrainingFramework.cpp
+  Camera.cpp
+e:\gameloft\proiect_2015\newtrainingframework_2015\newtrainingframework\camera.cpp(6): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+e:\gameloft\proiect_2015\newtrainingframework_2015\newtrainingframework\camera.cpp(55): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  Generating Code...
+  NewTrainingFramework.vcxproj -> E:\Gameloft\proiect_2015\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
+  NewTrainingFramework.vcxproj -> E:\Gameloft\proiect_2015\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)
