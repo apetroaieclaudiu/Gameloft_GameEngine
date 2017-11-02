@@ -46,14 +46,13 @@ void Draw ( ESContext *esContext )
 {
 	Matrix mr;
 	Matrix Pers;
-	
-	Pers.SetPerspective(cam.getFOV(), (float)Globals::screenWidth / (float)Globals::screenHeight, cam.getNear(), cam.getFar());
 
-	alpha += 0.0f;
+	Pers.SetPerspective(cam.fov, (float)Globals::screenWidth / (float)Globals::screenHeight, cam.Near, cam.Far);
 
 	mr.SetRotationZ(alpha);
-	Matrix mvp = mr * cam.getViewMatrix() * Pers;
-	
+	alpha += 0.0f;
+
+	Matrix mvp = mr * cam.viewMatrix * Pers;
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	glUseProgram(myShaders.program); //alegem shaderul folosit
@@ -91,17 +90,44 @@ void Update ( ESContext *esContext, float deltaTime )
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
-	if (key == 'W')
-		cam.moveOz(-1);
+	if (key == 'Z')
+		cam.moveOy(1.0f);
 
-	if (key == 'S')
-		cam.moveOz(1);
+	if (key == 'Q')
+		cam.RotateOz(1.0f);
+
+	if (key == VK_UP)
+		cam.RotateOx(-1.0f);
+
+	if (key == VK_RIGHT)
+		cam.RotateOy(1.0f);
+
+	if (key == VK_DOWN)
+		cam.RotateOx(1.0f);
+
+	if (key == VK_LEFT)
+		cam.RotateOy(-1.0f);
+
+	if (key == 'X')
+		cam.moveOy(-1.0f);
 
 	if (key == 'A')
-		cam.moveOx(-1);
+		cam.moveOx(-1.0f);
 
 	if (key == 'D')
-		cam.moveOx(1);
+		cam.moveOx(1.0f);
+
+	if (key == 'W')
+		cam.moveOz(-1.0f);
+
+	if (key == 'S')
+		cam.moveOz(1.0f);
+
+	if (key == 'E')
+		cam.RotateOz(-1.0f);
+
+	if (key == 'Q')
+		cam.RotateOz(1.0f);
 }
 
 void CleanUp()

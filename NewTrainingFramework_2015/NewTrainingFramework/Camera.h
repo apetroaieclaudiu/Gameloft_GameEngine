@@ -1,35 +1,33 @@
 #pragma once
 #include "../Utilities/utilities.h"
-
+#include <math.h>
 class Camera
 {
 public:
-	Camera();
-	~Camera();
-	void	moveOx(int);
-	void	moveOy(int);
-	void	moveOz(int);
-	void	rotateOx(int);
-	void	rotateOy(int);
-	void	rotateOz(int);
-	void	updateWorldView();
-	void	setDeltaTime(float);
-	GLfloat	getFar();
-	GLfloat getNear();
-	GLfloat	getFOV();
-	Matrix	getViewMatrix();
+	Vector4 position, target, up;
+	Vector4 xAxis, yAxis, zAxis;
 
-private:
-	Vector3 pos;
-	Vector3 target;
-	Vector3	up;
-	Vector3 xAxis, yAxis, zAxis;
+	Matrix viewMatrix, worldMatrix;
+
 	GLfloat moveSpeed;
 	GLfloat rotateSpeed;
-	GLfloat Near;
-	GLfloat Far;
-	GLfloat fov;
-	GLfloat deltaTime;
-	Matrix	viewMatrix;
-	Matrix	worldMatrix;
+	GLfloat Near, Far, fov, deltaTime;
+
+	void moveOz(float);
+	void moveOy(float);
+	void moveOx(float);
+	void setDeltaTime(float delta) {
+		deltaTime = (GLfloat)delta;
+	}
+	void RotateOx(float);
+	void RotateOy(float);
+	void RotateOz(float);
+	void updateWorld();
+	void updateView();
+	void update();
+	Matrix getRotation();
+	Matrix getTranspose();
+	void UpdateAxis();
+	Camera();
+	~Camera();
 };
