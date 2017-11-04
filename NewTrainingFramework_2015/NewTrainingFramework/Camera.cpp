@@ -110,11 +110,13 @@ void	Camera::rotateOx(int sens)
 
 void Camera::rotateOz(int sens) 
 {
+	Matrix	m;
+	Vector4 rotatedLocalUp = Vector4(0.0f, 1.0f, 0.0f, 0.0f) * m.SetRotationZ(rotateSpeed * deltaTime * sens);
+	Vector4 u = rotatedLocalUp * worldMatrix;
+	up = Vector3(u.x, u.y, u.z).Normalize();
 	Vector4 localTarget = Vector4(0.0f, 0.0f, -(target - position).Length(), 1.0f);
-	Matrix mRotateOz;
-	mRotateOz.SetRotationZ(rotateSpeed * deltaTime * sens);
-	Vector4 rotatedTarget = localTarget * mRotateOz;
-	Vector4 u = rotatedTarget * worldMatrix;
+	Vector4 rotatedTarget = localTarget * m;
+	u = rotatedTarget * worldMatrix;
 	target = Vector3(u.x, u.y, u.z);
 	update();
 }
