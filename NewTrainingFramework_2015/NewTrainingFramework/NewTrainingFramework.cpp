@@ -47,8 +47,8 @@ void Draw ( ESContext *esContext )
 	m.SetScale(0.1f, 0.1f, 0.1f);
 	Matrix mvp = m * cam.getView();
 	Matrix P;
-
-	P.SetPerspective(cam.getFOV(), Globals::screenWidth / Globals::screenHeight, cam.getNear(), cam.getFar());
+	
+	P.SetPerspective(cam.getFOV(),(GLfloat) Globals::screenWidth / Globals::screenHeight, cam.getNear(), cam.getFar());
 	mvp = mvp * P;
 
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -84,6 +84,7 @@ void Draw ( ESContext *esContext )
 void Update ( ESContext *esContext, float deltaTime )
 {
 	cam.setDeltaTime(deltaTime);
+	cam.update();
 }
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
@@ -97,16 +98,16 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 		cam.moveOz(1);
 		break;
 	case 'Q':
-		cam.moveOy(1);
-		break;
-	case 'E':
 		cam.moveOy(-1);
 		break;
+	case 'E':
+		cam.moveOy(1);
+		break;
 	case 'A':
-		cam.moveOx(1);
+		cam.moveOx(-1);
 		break;
 	case 'D':
-		cam.moveOx(-1);
+		cam.moveOx(1);
 		break;
 	case 'Z':
 		cam.rotateOz(1);

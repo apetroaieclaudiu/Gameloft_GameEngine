@@ -8,7 +8,7 @@ varying vec3 v_color;
 void main()
 {
 vec4 posL = vec4(a_posL, 1.0);
-posL = posL * u_matrix;
+posL = u_matrix * posL;
 v_color	= a_color;
 gl_Position = posL;
 }
