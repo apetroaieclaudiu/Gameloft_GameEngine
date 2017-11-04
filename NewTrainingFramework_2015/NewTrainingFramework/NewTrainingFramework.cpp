@@ -84,7 +84,11 @@ void Draw ( ESContext *esContext )
 void Update ( ESContext *esContext, float deltaTime )
 {
 	cam.setDeltaTime(deltaTime);
-	cam.update();
+
+	if ((GetKeyState(VK_LBUTTON) & 0x100) != 0)
+	{
+		printf("Merge...\n");
+	}
 }
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)

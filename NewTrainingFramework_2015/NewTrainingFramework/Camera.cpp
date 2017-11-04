@@ -62,6 +62,7 @@ void	Camera::moveOz(int sens)
 	Vector3 vectorDeplasare = forward * moveSpeed * deltaTime;
 	position += vectorDeplasare;
 	target += vectorDeplasare;
+	update();
 }
 
 void	Camera::moveOy(int sens)
@@ -70,6 +71,7 @@ void	Camera::moveOy(int sens)
 	Vector3 vectorDeplasare = forward * moveSpeed * deltaTime;
 	position += vectorDeplasare;
 	target += vectorDeplasare;
+	update();
 }
 
 void	Camera::moveOx(int sens)
@@ -78,6 +80,7 @@ void	Camera::moveOx(int sens)
 	Vector3 vectorDeplasare = forward * moveSpeed * deltaTime;
 	position += vectorDeplasare;
 	target += vectorDeplasare;
+	update();
 }
 GLfloat	Camera::getNear()
 {
@@ -102,6 +105,7 @@ void	Camera::rotateOx(int sens)
 	Vector4 rotatedTarget = localTarget * m;
 	u = rotatedTarget * worldMatrix;
 	target = Vector3(u.x, u.y, u.z);
+	update();
 }
 
 void Camera::rotateOz(int sens) 
@@ -112,6 +116,7 @@ void Camera::rotateOz(int sens)
 	Vector4 rotatedTarget = localTarget * mRotateOz;
 	Vector4 u = rotatedTarget * worldMatrix;
 	target = Vector3(u.x, u.y, u.z);
+	update();
 }
 
 void Camera::rotateOy(int sens) 
@@ -122,4 +127,5 @@ void Camera::rotateOy(int sens)
 	Vector4 rotatedTarget = localTarget * m;
 	Vector4 u = rotatedTarget * worldMatrix;
 	target = Vector3(u.x, u.y, u.z);
+	update();
 }
