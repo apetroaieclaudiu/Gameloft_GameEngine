@@ -3,31 +3,35 @@
 #include <math.h>
 class Camera
 {
-public:
-	Vector4 position, target, up;
-	Vector4 xAxis, yAxis, zAxis;
-
-	Matrix viewMatrix, worldMatrix;
-
+	Vector3 position;
+	Vector3 target;
+	Vector3 up;
+	
 	GLfloat moveSpeed;
-	GLfloat rotateSpeed;
-	GLfloat Near, Far, fov, deltaTime;
+	GLfloat	rotateSpeed;
+	GLfloat Near;
+	GLfloat Far;
+	GLfloat	FOV;
+	GLfloat deltaTime;
+	Vector3 xAxis, yAxis, zAxis;
+	Matrix	viewMatrix, worldMatrix;
 
-	void moveOz(float);
-	void moveOy(float);
-	void moveOx(float);
-	void setDeltaTime(float delta) {
-		deltaTime = (GLfloat)delta;
-	}
-	void RotateOx(float);
-	void RotateOy(float);
-	void RotateOz(float);
-	void updateWorld();
-	void updateView();
-	void update();
-	Matrix getRotation();
-	Matrix getTranspose();
-	void UpdateAxis();
+public:
 	Camera();
 	~Camera();
+	Matrix	getView();
+	Matrix	getWorld();
+	void	setDeltaTime(float);
+	void	updateWorldView();
+	void	updateAxis();
+	void	update();
+	void	moveOz(int);
+	void	moveOy(int);
+	void	moveOx(int);
+	void	rotateOx(int);
+	void	rotateOy(int);
+	void	rotateOz(int);
+	GLfloat	getNear();
+	GLfloat	getFar();
+	GLfloat	getFOV();
 };

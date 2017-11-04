@@ -1,6 +1,6 @@
-﻿  NewTrainingFramework.cpp
-  Camera.cpp
-  Generating Code...
-Camera.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+﻿  Camera.cpp
+e:\gameloft\gameloft-gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(60): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+e:\gameloft\gameloft-gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(69): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+e:\gameloft\gameloft-gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(78): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
   NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft-GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
   NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft-GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)
