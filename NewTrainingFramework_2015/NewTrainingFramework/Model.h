@@ -5,12 +5,13 @@ class Model
 {
 	std::vector<unsigned int>	indices;
 	std::vector<float>			points;
+	int							nr_vertex;
 
 public:
-	Model();
+	Model(const char*);
 	~Model();
 	std::vector<unsigned int>	getIndices();
 	std::vector<float>			getPoints();
-	void						setAll();
+	int							getNr();
 };
 

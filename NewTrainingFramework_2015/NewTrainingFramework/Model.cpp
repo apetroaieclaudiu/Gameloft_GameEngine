@@ -6,27 +6,18 @@
 #include <stdlib.h>
 #include <algorithm>
 
-Model::Model()
-{
-}
-
-Model::~Model()
-{
-}
-
-void						Model::setAll()
+Model::Model(const char* c)
 {
 	std::string		aux;
-	int				nr_vertex;
 	unsigned int	ind;
 	float			vertex;
-	std::ifstream	f("../Resources/Models/Croco.nfg");
+	std::ifstream	f(c);
 
 	f >> aux;
 	f >> aux;
-	
+
 	nr_vertex = atoi(aux.c_str());
-	
+
 	for (int i = 0; i < nr_vertex; i++)
 	{
 		f >> aux;
@@ -72,6 +63,10 @@ void						Model::setAll()
 	}
 }
 
+Model::~Model()
+{
+}
+
 std::vector<unsigned int>	Model::getIndices()
 {
 	return (indices);
@@ -80,4 +75,9 @@ std::vector<unsigned int>	Model::getIndices()
 std::vector<float>			Model::getPoints()
 {
 	return (points);
+}
+
+int							Model::getNr()
+{
+	return (nr_vertex);
 }
