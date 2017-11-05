@@ -8,10 +8,12 @@
 #include <conio.h>
 #include "Globals.h"
 #include "Camera.h"
+#include "Model.h"
 
 GLuint vboId;
 Shaders myShaders;
 Camera	cam;
+Model	model;
 
 int Init ( ESContext *esContext )
 {
@@ -19,16 +21,22 @@ int Init ( ESContext *esContext )
 	glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
 
 	//triangle data (heap)
-	Vertex verticesData[3];
+	Vertex verticesData[6];
 	//inmultim cu matricea de proiectie ca sa ducem in spatiul (-1,1)
 	verticesData[0].pos.x =  0.0f;  verticesData[0].pos.y =  0.5f;  verticesData[0].pos.z =  0.0f;
-	verticesData[1].pos.x = -0.5f;  verticesData[1].pos.y = -0.5f;  verticesData[1].pos.z =  0.0f;
+	verticesData[1].pos.x =  0.0f;  verticesData[1].pos.y = -0.5f;  verticesData[1].pos.z =  0.0f;
 	verticesData[2].pos.x =  0.5f;  verticesData[2].pos.y = -0.5f;  verticesData[2].pos.z =  0.0f;
-	
+	verticesData[3].pos.x = 0.0f;	verticesData[3].pos.y = 0.5f;	verticesData[3].pos.z = 0.0f;
+	verticesData[4].pos.x = 0.5f;	verticesData[4].pos.y = -0.5f;	verticesData[4].pos.z = 0.0f;
+	verticesData[5].pos.x = 0.5f;	verticesData[5].pos.y = 0.5f;	verticesData[5].pos.z = 0.0f;
+
 	verticesData[0].color.x = 1.0f;	verticesData[0].color.y = 0.0f;	verticesData[0].color.z = 0.0f;
 	verticesData[1].color.x = 0.0f;	verticesData[1].color.y = 1.0f;	verticesData[1].color.z = 0.0f;
 	verticesData[2].color.x = 0.0f;	verticesData[2].color.y = 0.0f;	verticesData[2].color.z = 1.0f;
-
+	verticesData[3].color.x = 1.0f; verticesData[3].color.y = 0.0f;	verticesData[3].color.z = 0.0f;
+	verticesData[4].color.x = 0.0f; verticesData[4].color.y = 0.0f;	verticesData[4].color.z = 1.0f;
+	verticesData[5].color.x = 0.0f; verticesData[5].color.y = 1.0f;	verticesData[5].color.z = 1.0f;
+	model.setAll();
 	//buffer object
 	glGenBuffers(1, &vboId);
 	//Imi leaga buffer de vboId
@@ -74,7 +82,7 @@ void Draw ( ESContext *esContext )
 		glVertexAttribPointer(myShaders.colorAttribute, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid *) sizeof(Vector3));
 	}
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
