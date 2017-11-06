@@ -14,7 +14,7 @@ GLuint vboId;
 Shaders myShaders;
 Camera	cam;
 GLuint elementbuffer;
-Model model("../Resources/Models/Croco.nfg");
+Model model("../Resources/Models/Woman1.nfg");
 
 int Init ( ESContext *esContext )
 {
@@ -23,12 +23,12 @@ int Init ( ESContext *esContext )
 
 	glGenBuffers(1, &elementbuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.getIndices().size() * sizeof(unsigned int), &(model.getIndices())[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.indices.size() * sizeof(unsigned int), &(model.indices)[0], GL_STATIC_DRAW);
 	//buffer object
 	glGenBuffers(1, &vboId);
 	//Imi leaga buffer de vboId
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
-	glBufferData(GL_ARRAY_BUFFER, model.getPoints().size() * sizeof(float), &(model.getPoints())[0], GL_STATIC_DRAW); //Static draw -> nu mi modifica bufferul
+	glBufferData(GL_ARRAY_BUFFER, model.points.size() * sizeof(Vertex), &(model.points)[0], GL_STATIC_DRAW); //Static draw -> nu mi modifica bufferul
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	//creation of shaders and program 
@@ -70,7 +70,7 @@ void Draw ( ESContext *esContext )
 		glVertexAttribPointer(myShaders.colorAttribute, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid *) sizeof(Vector3));
 	}
 
-	glDrawElements(GL_TRIANGLES, model.getNr(), GL_UNSIGNED_SHORT, 0);
+	glDrawElements(GL_TRIANGLES, model.indices.size(), GL_UNSIGNED_INT, (void *) 0);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 

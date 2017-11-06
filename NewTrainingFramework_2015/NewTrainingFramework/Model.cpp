@@ -20,35 +20,32 @@ Model::Model(const char* c)
 
 	for (int i = 0; i < nr_vertex; i++)
 	{
+		points.push_back(Vertex());
 		f >> aux;
 		f >> aux;
 		aux.erase(0, 5);
 		vertex = atof(aux.c_str());
 
-		if (std::find(points.begin(), points.end(), vertex) == points.end())
-			points.push_back(vertex);
-
+		points[i].pos.x = (GLfloat)vertex;
+		points[i].color.x = 1.0f;
 		f >> vertex;
 
-		if (std::find(points.begin(), points.end(), vertex) == points.end())
-			points.push_back(vertex);
+		points[i].pos.y = (GLfloat)vertex;
 
 		f >> aux;
 		f >> aux;
 		vertex = atof(aux.c_str());
 
-		if (std::find(points.begin(), points.end(), vertex) == points.end())
-			points.push_back(vertex);
+		points[i].pos.z = (GLfloat)vertex;
 
 		std::getline(f, aux);
 	}
 
 	f >> aux;
 	f >> aux;
-	nr_vertex = atoi(aux.c_str());
-	nr_vertex /= 3;
+	nr_index = atoi(aux.c_str());
 
-	for (int i = 0; i < nr_vertex; i++)
+	for (int i = 0; i < nr_index/3; i++)
 	{
 		f >> aux;
 		f >> aux;
@@ -67,17 +64,12 @@ Model::~Model()
 {
 }
 
-std::vector<unsigned int>	Model::getIndices()
-{
-	return (indices);
-}
-
-std::vector<float>			Model::getPoints()
-{
-	return (points);
-}
-
 int							Model::getNr()
 {
 	return (nr_vertex);
+}
+
+int							Model::getInd()
+{
+	return(nr_index);
 }
