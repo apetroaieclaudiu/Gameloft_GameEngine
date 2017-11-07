@@ -27,7 +27,6 @@ Model::Model(const char* c)
 		vertex = atof(aux.c_str());
 
 		points[i].pos.x = (GLfloat)vertex;
-		points[i].color.x = 1.0f;
 		f >> vertex;
 
 		points[i].pos.y = (GLfloat)vertex;
@@ -37,6 +36,66 @@ Model::Model(const char* c)
 		vertex = atof(aux.c_str());
 
 		points[i].pos.z = (GLfloat)vertex;
+
+		f >> aux;
+		aux.erase(0, 6);
+		vertex = atof(aux.c_str());
+
+		points[i].norm.x = (GLfloat)vertex;
+
+		f >> vertex;
+
+		points[i].norm.y = (GLfloat)vertex;
+
+		f >> aux;
+		f >> aux;
+		vertex = atof(aux.c_str());
+
+		points[i].norm.z = (GLfloat)vertex;
+
+		f >> aux;
+		aux.erase(0, 8);
+		vertex = atof(aux.c_str());
+
+		points[i].binorm.x = (GLfloat)vertex;
+
+		f >> vertex;
+
+		points[i].binorm.y = (GLfloat)vertex;
+
+		f >> aux;
+		f >> aux;
+		vertex = atof(aux.c_str());
+
+		points[i].binorm.z = (GLfloat)vertex;
+		
+
+		f >> aux;
+		aux.erase(0, 5);
+		vertex = atof(aux.c_str());
+
+		points[i].tgt.x = (GLfloat)vertex;
+
+		f >> vertex;
+
+		points[i].tgt.y = (GLfloat)vertex;
+
+		f >> aux;
+		f >> aux;
+		vertex = atof(aux.c_str());
+
+		points[i].tgt.z = (GLfloat)vertex;
+
+
+		f >> aux;
+		aux.erase(0, 4);
+		vertex = atof(aux.c_str());
+
+		points[i].uv.x = (GLfloat)vertex;
+
+		f >> vertex;
+
+		points[i].uv.y = (GLfloat)vertex;
 
 		std::getline(f, aux);
 	}

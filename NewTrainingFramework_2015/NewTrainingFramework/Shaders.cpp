@@ -20,8 +20,10 @@ int Shaders::Init(char * fileVertexShader, char * fileFragmentShader)
 
 	//finding location of uniforms / attributes
 	positionAttribute = glGetAttribLocation(program, "a_posL"); //ia locatia variabilei a_posL din shader ca sa modif variabile
-	colorAttribute = glGetAttribLocation(program, "a_color"); //ia locatia variabilei a_color din shader ca sa modif variabile
 	matrixUniform = glGetUniformLocation(program, "u_matrix");
+	textureUniform = glGetUniformLocation(program, "u_texture");
+	uvAttribute = glGetAttribLocation(program, "a_uv");
+
 	return 0;
 }
 

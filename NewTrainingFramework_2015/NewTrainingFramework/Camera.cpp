@@ -7,7 +7,7 @@ Camera::Camera()
 	target = Vector3(0.0f, 0.0f, 0.0f);
 	up = Vector3(0.0f, 1.0f, 0.0f);
 	moveSpeed = 5.0f;
-	rotateSpeed = 0.5f;
+	rotateSpeed = 0.9f;
 	Near = 0.2f;
 	Far = 5000.0f;
 	FOV = 45.0f;
