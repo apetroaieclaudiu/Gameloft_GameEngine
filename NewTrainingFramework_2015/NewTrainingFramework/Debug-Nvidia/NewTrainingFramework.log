@@ -1,3 +1,4 @@
-﻿  NewTrainingFramework.cpp
+﻿  resourceManager.cpp
+Camera.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft-GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
   NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft-GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)

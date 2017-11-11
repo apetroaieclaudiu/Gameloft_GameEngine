@@ -12,6 +12,7 @@ class Model
 
 public:
 	std::vector<unsigned int>	indices;
+	std::vector<unsigned int>   windices;
 	std::vector<Vertex>			points;
 	Model(const char*);
 	~Model();

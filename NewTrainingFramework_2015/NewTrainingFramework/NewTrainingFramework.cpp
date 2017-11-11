@@ -9,22 +9,30 @@
 #include "Globals.h"
 #include "Camera.h"
 #include "Model.h"
+#include "resourceManager.h"
 
 GLuint	vboId;
 GLuint	elementbuffer;
 GLuint	textureUniform;
 GLuint	id_textura;
+GLuint	wIndices;
 Shaders myShaders;
 Camera	cam;
 Model	model("../Resources/Models/Croco.nfg");
-int width, height, bpp;
-GLuint format;
+int		width, height, bpp;
+GLuint	format;
+bool	wired;
+float	contor = 0;
+resourceManager* res = resourceManager::getInstance();
+
 
 int Init ( ESContext *esContext )
 {
+
+	resourceManager::getInstance()->parsare();
 	//seteaza culoarea de background
 	glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
-
+	glEnable(GL_DEPTH_TEST);
 	glGenBuffers(1, &elementbuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.indices.size() * sizeof(unsigned int), &(model.indices)[0], GL_STATIC_DRAW);
@@ -34,6 +42,11 @@ int Init ( ESContext *esContext )
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
 	glBufferData(GL_ARRAY_BUFFER, model.points.size() * sizeof(Vertex), &(model.points)[0], GL_STATIC_DRAW); //Static draw -> nu mi modifica bufferul
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glGenBuffers(1, &wIndices);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, wIndices);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.windices.size() * sizeof(unsigned int), &(model.windices)[0], GL_STATIC_DRAW); //Static draw -> nu mi modifica bufferul
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	char *array_pixeli;
 	
@@ -72,8 +85,15 @@ void Draw ( ESContext *esContext )
 
 	glUseProgram(myShaders.program); //alegem shaderul folosit
 
-	glBindBuffer(GL_ARRAY_BUFFER, vboId);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	if (wired == false) {
+		glBindBuffer(GL_ARRAY_BUFFER, vboId);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
+	}
+	else {
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, wIndices);
+		glBindBuffer(GL_ARRAY_BUFFER, vboId);
+	}
+
 	glBindTexture(GL_TEXTURE_2D, id_textura);
 
 	if(myShaders.positionAttribute != -1)
@@ -98,8 +118,11 @@ void Draw ( ESContext *esContext )
 		glActiveTexture(GL_TEXTURE0);
 		glUniform1i(textureUniform, 0);
 	}
-
-	glDrawElements(GL_TRIANGLES, model.indices.size(), GL_UNSIGNED_INT, (void *) 0);
+	
+	if (wired == 0)
+		glDrawElements(GL_TRIANGLES, model.indices.size(), GL_UNSIGNED_INT,(void *) 0);
+	else
+		glDrawElements(GL_LINES, model.windices.size(), GL_UNSIGNED_INT,(void *) 0);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -110,6 +133,9 @@ void Draw ( ESContext *esContext )
 
 void Update ( ESContext *esContext, float deltaTime )
 {
+
+	contor += deltaTime;
+
 	cam.setDeltaTime(deltaTime);
 
 	if ((GetKeyState(VK_LBUTTON) & 0x100) != 0)
@@ -120,44 +146,54 @@ void Update ( ESContext *esContext, float deltaTime )
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
-	switch (key)
+	if (contor >= 0.05)
 	{
-	case 'W':
-		cam.moveOz(-1);
-		break;
-	case 'S':
-		cam.moveOz(1);
-		break;
-	case 'Q':
-		cam.moveOy(-1);
-		break;
-	case 'E':
-		cam.moveOy(1);
-		break;
-	case 'A':
-		cam.moveOx(-1);
-		break;
-	case 'D':
-		cam.moveOx(1);
-		break;
-	case 'Z':
-		cam.rotateOz(1);
-		break;
-	case VK_UP:
-		cam.rotateOx(-1);
-		break;
-	case VK_RIGHT:
-		cam.rotateOy(1);
-		break;
-	case VK_DOWN:
-		cam.rotateOx(1);
-		break;
-	case VK_LEFT:
-		cam.rotateOy(-1);
-		break;
-	case 'X':
-		cam.rotateOz(-1);
-		break;
+		contor -= 0.05;
+		switch (key)
+		{
+		case 'W':
+			cam.moveOz(-1);
+			break;
+		case 'S':
+			cam.moveOz(1);
+			break;
+		case 'Q':
+			cam.moveOy(1);
+			break;
+		case 'E':
+			cam.moveOy(-1);
+			break;
+		case 'A':
+			cam.moveOx(1);
+			break;
+		case 'D':
+			cam.moveOx(-1);
+			break;
+		case 'Z':
+			cam.rotateOz(-1);
+			break;
+		case VK_UP:
+			cam.rotateOx(1);
+			break;
+		case VK_RIGHT:
+			cam.rotateOy(-1);
+			break;
+		case VK_DOWN:
+			cam.rotateOx(-1);
+			break;
+		case VK_LEFT:
+			cam.rotateOy(1);
+			break;
+		case 'X':
+			cam.rotateOz(1);
+			break;
+		case 'F':
+			wired = false;
+			break;
+		case 'T':
+			wired = true;
+			break;
+		}
 	}
 }
 
@@ -181,7 +217,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 
 	esRegisterDrawFunc ( &esContext, Draw );
-	esRegisterUpdateFunc ( &esContext, Update );
+	esRegisterUpdateFunc(&esContext, Update);
 	esRegisterKeyFunc ( &esContext, Key);
 
 	esMainLoop ( &esContext );

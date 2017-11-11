@@ -9,7 +9,7 @@
 Model::Model(const char* c)
 {
 	std::string		aux;
-	unsigned int	ind;
+	unsigned int	ind1, ind;
 	float			vertex;
 	std::ifstream	f(c);
 
@@ -109,12 +109,19 @@ Model::Model(const char* c)
 		f >> aux;
 		f >> aux;
 		ind = atoi(aux.c_str());
+		ind1 = ind;
 		indices.push_back(ind);
+		windices.push_back(ind);
 		f >> aux;
 		ind = atoi(aux.c_str());
 		indices.push_back(ind);
+		windices.push_back(ind);
+		windices.push_back(ind);
 		f >> aux;
 		ind = atoi(aux.c_str());
+		windices.push_back(ind);
+		windices.push_back(ind);
+		windices.push_back(ind1);
 		indices.push_back(ind);
 	}
 }
