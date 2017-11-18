@@ -1,19 +1,20 @@
 #pragma once
-#include <vector>
-#include "Shaders.h"
-#include "Models.h"
-#include "Textures.h"
+#include "../Utilities/utilities.h"
+#include <map>
+#include "ShaderResource.h"
+#include "ModelResource.h"
+#include "TextureResource.h"
 
 class resourceManager
 {
 private:
-	std::vector<Models>				model;
-	std::vector<Shaders>			shader;
-	std::vector<Textures>			textures;
-	static	resourceManager*		spInstance;
+	std::map <int, ModelResource>				model;
+	std::map <int, ShaderResource>				shader;
+	std::map <int, TextureResource>				textures;
+	static	resourceManager*					spInstance;
 	resourceManager();
 public:
 	~resourceManager();
 	static resourceManager*			getInstance();
-	void							parsare();
+	void							Init();
 };

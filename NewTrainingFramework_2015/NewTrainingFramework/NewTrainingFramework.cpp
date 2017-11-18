@@ -18,7 +18,7 @@ GLuint	id_textura;
 GLuint	wIndices;
 Shaders myShaders;
 Camera	cam;
-Model	model("../Resources/Models/Croco.nfg");
+Model	model("../Resources/Models/Witch.nfg");
 int		width, height, bpp;
 GLuint	format;
 bool	wired;
@@ -29,7 +29,8 @@ resourceManager* res = resourceManager::getInstance();
 int Init ( ESContext *esContext )
 {
 
-	resourceManager::getInstance()->parsare();
+	resourceManager::getInstance()->Init();
+
 	//seteaza culoarea de background
 	glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
 	glEnable(GL_DEPTH_TEST);
@@ -50,7 +51,7 @@ int Init ( ESContext *esContext )
 
 	char *array_pixeli;
 	
-	array_pixeli = LoadTGA("../Resources/Textures/Croco.tga", &width, &height, &bpp);
+	array_pixeli = LoadTGA("../Resources/Textures/Witch.tga", &width, &height, &bpp);
 	
 	if (bpp == 24) {
 		format = GL_RGB;
@@ -70,12 +71,15 @@ int Init ( ESContext *esContext )
 	//creation of shaders and program 
 	return myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs"); //Se da calea catre shadere
 }
-
+float alpha;
 void Draw ( ESContext *esContext )
 {
-	Matrix m;
+	Matrix m, n;
+	alpha += 0.01;
+	n.SetRotationY(alpha);
 	m.SetScale(0.01f, 0.01f, 0.01f);
-	Matrix mvp = m * cam.getView();
+	
+	Matrix mvp = m * n * cam.getView();
 	Matrix P;
 	
 	P.SetPerspective(cam.getFOV(),(GLfloat) Globals::screenWidth / Globals::screenHeight, cam.getNear(), cam.getFar());

@@ -1,4 +1,5 @@
 ﻿  resourceManager.cpp
-Camera.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\crtdbg.h(302): warning C4005: '_malloca': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\malloc.h(120): note: see previous definition of '_malloca'
   NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft-GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
   NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft-GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)

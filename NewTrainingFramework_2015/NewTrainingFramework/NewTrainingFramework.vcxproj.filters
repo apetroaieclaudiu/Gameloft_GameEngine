@@ -65,10 +65,13 @@
     <ClInclude Include="resourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Models.h">
+    <ClInclude Include="ModelResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Textures.h">
+    <ClInclude Include="TextureResource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

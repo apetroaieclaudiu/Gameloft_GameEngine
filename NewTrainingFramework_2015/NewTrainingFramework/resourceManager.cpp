@@ -5,9 +5,9 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <vector>
 #include <algorithm>
 #include "../Utilities/utilities.h"
-
 
 using namespace rapidxml;
 using namespace std;
@@ -19,7 +19,7 @@ resourceManager::resourceManager()
 	
 }
 
-void			 resourceManager::parsare()
+void			 resourceManager::Init()
 {
 	xml_document<> doc;
 	xml_node<> * root_node;
@@ -36,32 +36,27 @@ void			 resourceManager::parsare()
 	{
 		for (xml_node<> * pTest = pNode->first_node("model"); pTest; pTest = pTest->next_sibling())
 		{
-			printf("ID: %s\n", pTest->first_attribute("id")->value());
-			printf("Path: %s\n", pTest->first_node("path")->value());
+			ModelResource temp = { pTest->first_node("path")->value() };
+			model.insert (pair <int, ModelResource> (atoi(pTest->first_attribute("id")->value()), temp));
 		}
 	}
-	cout << '\n';
 	for (xml_node<> * pNode = root_node->first_node("shaders"); pNode; pNode = pNode->next_sibling())
 	{
 		for (xml_node<> * pTest = pNode->first_node("shader"); pTest; pTest = pTest->next_sibling())
 		{
-			printf("ID: %s\n", pTest->first_attribute("id")->value());
-			printf("VS: %s\n", pTest->first_node("vs")->value());
-			printf("FS: %s\n", pTest->first_node("fs")->value());
+			ShaderResource temp = { pTest->first_node("vs")->value(), pTest->first_node("fs")->value()};
+			shader.insert(pair <int, ShaderResource> (atoi(pTest->first_attribute("id")->value()), temp));
 		}
 	}
-	cout << '\n';
+
 	for (xml_node<> * pNode = root_node->first_node("textures"); pNode; pNode = pNode->next_sibling())
 	{
 		for (xml_node<> * pTest = pNode->first_node("texture"); pTest; pTest = pTest->next_sibling())
 		{
-			printf("ID: %s\n", pTest->first_attribute("id")->value());
-			printf("TYPE: %s\n", pTest->first_attribute("type")->value());
-			printf("Path: %s\n", pTest->first_node("path")->value());
-			printf("MIN_FILTER: %s\n", pTest->first_node("min_filter")->value());
-			printf("MAG_FILTER: %s\n", pTest->first_node("mag_filter")->value());
-			printf("WRAP_S: %s\n", pTest->first_node("wrap_s")->value());
-			printf("WRAP_T: %s\n", pTest->first_node("wrap_t")->value());
+
+			TextureResource temp = { pTest->first_attribute("type")->value(), pTest->first_node("path")->value(),(GLint) pTest->first_node("min_filter")->value(),
+				(GLint) pTest->first_node("mag_filter")->value(),(GLint) pTest->first_node("wrap_s")->value(),(GLint) pTest->first_node("wrap_t")->value()};
+			textures.insert(pair <int, TextureResource>(atoi(pTest->first_attribute("id")->value()), temp));
 		}
 	}
 	theFile.close();
