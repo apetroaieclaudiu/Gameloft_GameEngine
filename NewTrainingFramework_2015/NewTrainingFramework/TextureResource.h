@@ -1,13 +1,11 @@
 #pragma once
-#include "../Utilities/utilities.h"
 #include <string>
 
-struct TextureResource
-{
-	std::string		type;
-	std::string		path;
-	GLint			min_filter;
-	GLint			mag_filter;
-	GLint			wrap_s;
-	GLint			wrap_t;
+struct TextureResource {
+	std::string type;
+	std::string	path;
+	std::string	min_filter;
+	std::string mag_filter;
+	std::string wrap_s;
+	std::string wrap_t;
 };

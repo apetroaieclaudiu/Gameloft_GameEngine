@@ -52,7 +52,7 @@ LRESULT WINAPI ESWindowProc ( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
          break; 
    } 
 
-   return lRet; 
+      return lRet; 
 }
 
 //      Create Win32 instance and window

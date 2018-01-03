@@ -10,7 +10,7 @@
 		<!-- si aici se adauga toate modelele -->
 	</models>
 	<shaders>
-		<shader id="10">
+		<shader id="1">
 			<vs>Resources/Shaders/vertexShader.vs</vs>
 			<fs>Resources/Shaders/fragmentShader.fs</fs>
 		</shader>
@@ -21,13 +21,13 @@
 		<!-- si aici se adauga toate shaderele -->
 	</shaders>
 	<textures>
-		<texture id="4" type="2d">
+		<texture id="8" type="2d">
 			<path>Resources/Textures/croco.tga</path>			
 			<min_filter>LINEAR</min_filter>
 			<mag_filter>LINEAR</mag_filter>
 			<wrap_s>CLAMP_TO_EDGE</wrap_s>
 			<wrap_t>CLAMP_TO_EDGE</wrap_t>
-		</textture>
+		</texture>
 		<texture id="5" type="2d">
 			<path>Resources/Textures/bus.tga</path>
 			<min_filter>LINEAR</min_filter>

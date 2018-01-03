@@ -1,6 +1,6 @@
 #pragma once
 #include "../Utilities/utilities.h"
-#include <math.h>
+
 class Camera
 {
 	Vector3 position;
@@ -18,6 +18,7 @@ class Camera
 
 public:
 	Camera();
+	Camera::Camera(Vector3, Vector3, Vector3, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
 	~Camera();
 	Matrix	getView();
 	Matrix	getWorld();

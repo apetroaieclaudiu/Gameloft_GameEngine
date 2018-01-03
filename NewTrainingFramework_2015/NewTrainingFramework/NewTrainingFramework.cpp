@@ -2,157 +2,57 @@
 //
 
 #include "stdafx.h"
-#include "../Utilities/utilities.h" // if you use STL, please include this line AFTER all other include
-#include "Vertex.h"
+#include "resourceManager.h"
+#include "sceneManager.h"
 #include "Shaders.h"
 #include <conio.h>
-#include "Globals.h"
-#include "Camera.h"
-#include "Model.h"
-#include "resourceManager.h"
+#include "Globals.h" // if you use STL, please include this line AFTER all other include
 
-GLuint	vboId;
-GLuint	elementbuffer;
-GLuint	textureUniform;
-GLuint	id_textura;
-GLuint	wIndices;
-Shaders myShaders;
 Camera	cam;
-Model	model("../Resources/Models/Witch.nfg");
-int		width, height, bpp;
-GLuint	format;
-bool	wired;
 float	contor = 0;
+bool	wired = false;
 resourceManager* res = resourceManager::getInstance();
+sceneManager*    scn = sceneManager::getInstance();
 
 
-int Init ( ESContext *esContext )
+int Init(ESContext *esContext)
 {
 
-	resourceManager::getInstance()->Init();
-
-	//seteaza culoarea de background
-	glClearColor ( 0.0f, 0.0f, 0.0f, 0.0f );
 	glEnable(GL_DEPTH_TEST);
-	glGenBuffers(1, &elementbuffer);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.indices.size() * sizeof(unsigned int), &(model.indices)[0], GL_STATIC_DRAW);
-	//buffer object
-	glGenBuffers(1, &vboId);
-	//Imi leaga buffer de vboId
-	glBindBuffer(GL_ARRAY_BUFFER, vboId);
-	glBufferData(GL_ARRAY_BUFFER, model.points.size() * sizeof(Vertex), &(model.points)[0], GL_STATIC_DRAW); //Static draw -> nu mi modifica bufferul
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	resourceManager::getInstance()->Init();
+	sceneManager::getInstance()->Load();
+	//seteaza culoarea de background
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	glEnable(GL_DEPTH_TEST);
 
-	glGenBuffers(1, &wIndices);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, wIndices);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, model.windices.size() * sizeof(unsigned int), &(model.windices)[0], GL_STATIC_DRAW); //Static draw -> nu mi modifica bufferul
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-	char *array_pixeli;
-	
-	array_pixeli = LoadTGA("../Resources/Textures/Witch.tga", &width, &height, &bpp);
-	
-	if (bpp == 24) {
-		format = GL_RGB;
-	}
-	else {
-		format = GL_RGBA;
-	}
-
-	glGenTextures(1, &id_textura);
-	glBindTexture(GL_TEXTURE_2D, id_textura);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, (GLvoid *) array_pixeli);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	//creation of shaders and program 
-	return myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs"); //Se da calea catre shadere
+	return 0;
 }
-float alpha;
-void Draw ( ESContext *esContext )
+
+void Draw(ESContext *esContext)
 {
-	Matrix m, n;
-	alpha += 0.01;
-	n.SetRotationY(alpha);
-	m.SetScale(0.01f, 0.01f, 0.01f);
-	
-	Matrix mvp = m * n * cam.getView();
-	Matrix P;
-	
-	P.SetPerspective(cam.getFOV(),(GLfloat) Globals::screenWidth / Globals::screenHeight, cam.getNear(), cam.getFar());
-	mvp = mvp * P;
+	sceneManager::getInstance()->Draw();
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
+ }
 
-	glUseProgram(myShaders.program); //alegem shaderul folosit
-
-	if (wired == false) {
-		glBindBuffer(GL_ARRAY_BUFFER, vboId);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementbuffer);
-	}
-	else {
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, wIndices);
-		glBindBuffer(GL_ARRAY_BUFFER, vboId);
-	}
-
-	glBindTexture(GL_TEXTURE_2D, id_textura);
-
-	if(myShaders.positionAttribute != -1)
-	{
-		glEnableVertexAttribArray(myShaders.positionAttribute);
-		glVertexAttribPointer(myShaders.positionAttribute, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
-	}
-
-	if (myShaders.uvAttribute != -1)
-	{
-		glEnableVertexAttribArray(myShaders.uvAttribute);
-		glVertexAttribPointer(myShaders.uvAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *) (4 * sizeof(Vector3)));
-	}
-
-	if (myShaders.matrixUniform != -1)
-	{
-		glUniformMatrix4fv(myShaders.matrixUniform, 1, GL_FALSE, (GLfloat *)mvp.m);
-	}
-
-	if (myShaders.textureUniform != -1)
-	{
-		glActiveTexture(GL_TEXTURE0);
-		glUniform1i(textureUniform, 0);
-	}
-	
-	if (wired == 0)
-		glDrawElements(GL_TRIANGLES, model.indices.size(), GL_UNSIGNED_INT,(void *) 0);
-	else
-		glDrawElements(GL_LINES, model.windices.size(), GL_UNSIGNED_INT,(void *) 0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	eglSwapBuffers ( esContext->eglDisplay, esContext->eglSurface );
-}
-
-void Update ( ESContext *esContext, float deltaTime )
+void Update(ESContext *esContext, float deltaTime)
 {
 
 	contor += deltaTime;
-
-	cam.setDeltaTime(deltaTime);
-
+	if (contor >= 0.05)
+	{
+		contor -= 0.05;
+		cam.setDeltaTime(deltaTime);
+	}
 	if ((GetKeyState(VK_LBUTTON) & 0x100) != 0)
 	{
 		printf("Merge...\n");
 	}
 }
 
-void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
+void Key(ESContext *esContext, unsigned char key, bool bIsPressed)
 {
-	if (contor >= 0.05)
-	{
-		contor -= 0.05;
+
 		switch (key)
 		{
 		case 'W':
@@ -198,33 +98,31 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 			wired = true;
 			break;
 		}
-	}
 }
 
 void CleanUp()
 {
-	glDeleteBuffers(1, &vboId);
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	//identifying memory leaks
-	_CrtSetDbgFlag ( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF ); 
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	ESContext esContext;
 
-    esInitContext ( &esContext );
+	esInitContext(&esContext);
 
-	esCreateWindow ( &esContext, "Hello Triangle", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
+	esCreateWindow(&esContext, "Hello Triangle", Globals::screenWidth, Globals::screenHeight, ES_WINDOW_RGB | ES_WINDOW_DEPTH);
 
-	if ( Init ( &esContext ) != 0 )
+	if (Init(&esContext) != 0)
 		return 0;
 
-	esRegisterDrawFunc ( &esContext, Draw );
+	esRegisterDrawFunc(&esContext, Draw);
 	esRegisterUpdateFunc(&esContext, Update);
-	esRegisterKeyFunc ( &esContext, Key);
+	esRegisterKeyFunc(&esContext, Key);
 
-	esMainLoop ( &esContext );
+	esMainLoop(&esContext);
 
 	//releasing OpenGL resources
 	CleanUp();
@@ -233,7 +131,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("Press any key...\n");
 	_getch();
 
-	
+
 	return 0;
 }
 

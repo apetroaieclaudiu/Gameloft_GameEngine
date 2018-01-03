@@ -1,5 +1,4 @@
-﻿  resourceManager.cpp
-c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\crtdbg.h(302): warning C4005: '_malloca': macro redefinition
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\malloc.h(120): note: see previous definition of '_malloca'
-  NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft-GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
-  NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft-GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)
+﻿  SceneObject.cpp
+e:\gameloft_gameengine-master\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(57): warning C4018: '<': signed/unsigned mismatch
+  NewTrainingFramework.vcxproj -> E:\Gameloft_GameEngine-master\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
+  NewTrainingFramework.vcxproj -> E:\Gameloft_GameEngine-master\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)

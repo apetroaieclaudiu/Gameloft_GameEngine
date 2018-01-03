@@ -13,7 +13,17 @@ Camera::Camera()
 	FOV = 45.0f;
 	update();
 }
-
+Camera::Camera(Vector3 pos, Vector3 tar, Vector3 sus, GLfloat ms, GLfloat rs, GLfloat nr, GLfloat fr, GLfloat fv)
+{
+	position = pos;
+	target = tar;
+	up = sus;
+	moveSpeed = ms;
+	rotateSpeed = rs;
+	Near = nr;
+	Far = fr;
+	FOV = fv;
+}
 Camera::~Camera()
 {
 
@@ -108,7 +118,7 @@ void	Camera::rotateOx(int sens)
 	update();
 }
 
-void Camera::rotateOz(int sens) 
+void Camera::rotateOz(int sens)
 {
 	Matrix	m;
 	Vector4 rotatedLocalUp = Vector4(0.0f, 1.0f, 0.0f, 0.0f) * m.SetRotationZ(rotateSpeed * deltaTime * sens);
@@ -121,7 +131,7 @@ void Camera::rotateOz(int sens)
 	update();
 }
 
-void Camera::rotateOy(int sens) 
+void Camera::rotateOy(int sens)
 {
 	Vector4 localTarget = Vector4(0.0f, 0.0f, -(target - position).Length(), 1.0f);
 	Matrix	m;

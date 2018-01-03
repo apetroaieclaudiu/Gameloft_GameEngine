@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 
-struct ModelResource
-{
-	std::string	path;
+struct ModelResource {
+	std::string path;
 };

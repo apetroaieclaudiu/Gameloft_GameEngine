@@ -40,19 +40,18 @@
 	<objects>
 		<object id="1">
 			<model>1</model><!-- id model -->
-			<shader>3</shader><!-- id shader -->
+			<shader>1</shader><!-- id shader -->
 			<type>normal</type>
 			<depthTest>true</depthTest>
 			<blend>true</blend>
 			<name>Crocodil_verde</name><!-- optional -->
 			<textures>
 				<texture id="8"/>
-				<texture id="14"/>
 			</textures>
 			<position><!-- translatia -->
-				<x>20.5</x>
-				<y>27</y>
-				<z>21.22</z>
+				<x>0</x>
+				<y>0</y>
+				<z>0</z>
 			</position>
 			<rotation>
 				<x>0.5</x>
