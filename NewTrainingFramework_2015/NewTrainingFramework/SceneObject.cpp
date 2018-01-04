@@ -38,11 +38,11 @@ void	SceneObject::addTexture(Texture *tr)
 void	SceneObject::Draw()
 {
 	Matrix m, p;
-	p.SetTranslation(position);
-	p = p * m.SetScale(scale);
+	p.SetScale(scale);
 	p = p * m.SetRotationX(rotation.x);
 	p = p * m.SetRotationY(rotation.y);
 	p = p * m.SetRotationZ(rotation.z);
+	p = p * m.SetTranslation(position);
 	m = p;
 	Matrix mvp = m * cam.getView();
 	Matrix P;

@@ -19,9 +19,9 @@ void	Texture::setMr(TextureResource *t)
 void	Texture::Load()
 {
 	char *array_pixeli;
-	int		width, height, bpp;
+	GLint		width, height, bpp;
 	GLuint	format;
-	array_pixeli = LoadTGA((char*)tr->path.c_str(), &width, &height, &bpp);
+	array_pixeli = LoadTGA((char*)("../" + tr->path).c_str(), &width, &height, &bpp);
 
 	if (bpp == 24) {
 		format = GL_RGB;
