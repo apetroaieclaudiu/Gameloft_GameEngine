@@ -30,6 +30,7 @@ int Init(ESContext *esContext)
 
 void Draw(ESContext *esContext)
 {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	sceneManager::getInstance()->Draw();
 
 	eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);

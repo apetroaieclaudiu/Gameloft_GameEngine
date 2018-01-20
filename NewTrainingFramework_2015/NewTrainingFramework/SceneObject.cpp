@@ -55,8 +55,14 @@ void	SceneObject::Draw()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model->getIId());
 
 	for (int i = 0; i < textures.size(); i++)
-		glBindTexture(GL_TEXTURE_2D, textures.at(i)->getId());
-
+	{
+		if (shader->textureUniform[i] != -1)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			glBindTexture(GL_TEXTURE_2D, textures.at(i)->getId());
+			glUniform1i(shader->textureUniform[i], 0);
+		}
+	}
 	if (shader->positionAttribute != -1)
 	{
 		glEnableVertexAttribArray(shader->positionAttribute);
@@ -72,12 +78,6 @@ void	SceneObject::Draw()
 	if (shader->matrixUniform != -1)
 	{
 		glUniformMatrix4fv(shader->matrixUniform, 1, GL_FALSE, (GLfloat *)mvp.m);
-	}
-
-	if (shader->textureUniform != -1)
-	{
-		glActiveTexture(GL_TEXTURE0);
-		glUniform1i(shader->textureUniform, 0);
 	}
 
 	glDrawElements(GL_TRIANGLES, model->indices.size(), GL_UNSIGNED_INT, (void *)0);

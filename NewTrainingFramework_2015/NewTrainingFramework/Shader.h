@@ -9,7 +9,7 @@ class Shader
 public:
 	GLint	positionAttribute;
 	GLint	matrixUniform;
-	GLint	textureUniform;
+	GLint	textureUniform[8];
 	GLint	uvAttribute;
 	void			Load();
 	void			setMr(ShaderResource *);

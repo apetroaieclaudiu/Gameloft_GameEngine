@@ -1,4 +1,6 @@
-﻿  SceneObject.cpp
-e:\gameloft\gameloft_gameengine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(57): warning C4018: '<': signed/unsigned mismatch
-  NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft_GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
-  NewTrainingFramework.vcxproj -> E:\Gameloft\Gameloft_GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)
+﻿  Camera.cpp
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(71): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(80): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(89): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  NewTrainingFramework.vcxproj -> C:\Users\Poli\Desktop\Ap_GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
+  NewTrainingFramework.vcxproj -> C:\Users\Poli\Desktop\Ap_GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)

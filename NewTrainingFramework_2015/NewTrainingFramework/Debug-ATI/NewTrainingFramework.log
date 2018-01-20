@@ -1,40 +1,36 @@
-﻿Build started 6/14/2015 3:14:41 PM.
-     1>Project "C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\NewTrainingFramework\NewTrainingFramework.vcxproj" on node 2 (rebuild target(s)).
-     1>_PrepareForClean:
-         Deleting file "Debug-ATI\NewTrainingFramework.lastbuildstate".
-       InitializeBuildStatus:
-         Creating "Debug-ATI\NewTrainingFramework.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\Include\ATI /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug-ATI\NewTrainingFramework.pch" /Fo"Debug-ATI\\" /Fd"Debug-ATI\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\Include\ATI /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug-ATI\NewTrainingFramework.pch" /Fo"Debug-ATI\\" /Fd"Debug-ATI\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt NewTrainingFramework.cpp Shaders.cpp
-         Shaders.cpp
-         NewTrainingFramework.cpp
-         Generating Code...
-       ManifestResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug-ATI\NewTrainingFramework.exe.embed.manifest.res" Debug-ATI\NewTrainingFramework_manifest.rc 
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\BIN-ATI\NewTrainingFramework.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\Lib\ATI libEGL.lib libGLESv2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug-ATI\NewTrainingFramework.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\BIN-ATI\NewTrainingFramework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\BIN-ATI\NewTrainingFramework.lib" /MACHINE:X86 "Debug-ATI\NewTrainingFramework.exe.embed.manifest.res"
-         "Debug-ATI\NewTrainingFramework.obj"
-         "Debug-ATI\Shaders.obj"
-         "Debug-ATI\stdafx.obj"
-         "C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\BIN-ATI\Utilities.lib"
-       Manifest:
-         Deleting file "Debug-ATI\NewTrainingFramework.exe.embed.manifest".
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug-ATI\NewTrainingFramework.exe.embed.manifest" /manifest "Debug-ATI\NewTrainingFramework.exe.intermediate.manifest"
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug-ATI\NewTrainingFramework.exe.embed.manifest.res" Debug-ATI\NewTrainingFramework_manifest.rc 
-       LinkEmbedManifest:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\BIN-ATI\NewTrainingFramework.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\Lib\ATI libEGL.lib libGLESv2.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug-ATI\NewTrainingFramework.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\BIN-ATI\NewTrainingFramework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\BIN-ATI\NewTrainingFramework.lib" /MACHINE:X86 "Debug-ATI\NewTrainingFramework.exe.embed.manifest.res"
-         "Debug-ATI\NewTrainingFramework.obj"
-         "Debug-ATI\Shaders.obj"
-         "Debug-ATI\stdafx.obj"
-         "C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\BIN-ATI\Utilities.lib"
-         NewTrainingFramework.vcxproj -> C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\\BIN-ATI\NewTrainingFramework.exe
-       FinalizeBuildStatus:
-         Deleting file "Debug-ATI\NewTrainingFramework.unsuccessfulbuild".
-         Touching "Debug-ATI\NewTrainingFramework.lastbuildstate".
-     1>Done Building Project "C:\Users\Irina\Desktop\training\NewIntership_23_05_2013_v2\NewIntership_23_05_2013\NewTrainingFramework\NewTrainingFramework\NewTrainingFramework.vcxproj" (rebuild target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:03.84
+﻿  stdafx.cpp
+  Texture.cpp
+  Shaders.cpp
+  Shader.cpp
+  SceneObject.cpp
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(57): warning C4018: '<': signed/unsigned mismatch
+  sceneManager.cpp
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(34): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(35): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(36): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(44): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(47): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(50): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(68): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(71): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(74): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  resourceManager.cpp
+  NewTrainingFramework.cpp
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\newtrainingframework.cpp(44): warning C4305: '-=': truncation from 'double' to 'float'
+  Model.cpp
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(55): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(70): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(80): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(86): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(96): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(103): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(113): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\model.cpp(120): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Camera.cpp
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(71): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(80): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\camera.cpp(89): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  Generating Code...
+Camera.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+LINK : fatal error LNK1207: incompatible PDB format in 'C:\Users\Poli\Desktop\Ap_GameEngine\NewTrainingFramework_2015\BIN-ATI\NewTrainingFramework.pdb'; delete and rebuild

@@ -32,7 +32,10 @@ void Shader::Load()
 	//finding location of uniforms / attributes
 	positionAttribute = glGetAttribLocation(program, "a_posL"); //ia locatia variabilei a_posL din shader ca sa modif variabile
 	matrixUniform = glGetUniformLocation(program, "u_matrix");
-	textureUniform = glGetUniformLocation(program, "u_texture");
+	textureUniform[0] = glGetUniformLocation(program, "u_texture0");
+	textureUniform[1] = glGetUniformLocation(program, "u_texture1");
+	textureUniform[2] = glGetUniformLocation(program, "u_texture2");
+	textureUniform[3] = glGetUniformLocation(program, "u_texture3");
 	uvAttribute = glGetAttribLocation(program, "a_uv");
 }
 
