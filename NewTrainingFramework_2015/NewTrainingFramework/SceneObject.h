@@ -20,9 +20,9 @@ class SceneObject
 public:
 	SceneObject(Vector3, Vector3, Vector3, bool);
 	SceneObject();
-	~SceneObject();
+	virtual ~SceneObject();
 	void	setModel(Model*);
 	void	setShader(Shader*);
 	void	addTexture(Texture*);
-	void	Draw();
+	virtual void	Draw();
 };

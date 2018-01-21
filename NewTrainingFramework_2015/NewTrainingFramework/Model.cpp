@@ -125,6 +125,10 @@ void		Model::Load()
 
 		points[i].uv.y = (GLfloat)vertex;
 
+		points[i].uv_blend.x = (GLfloat) 0.0f;
+		points[i].uv_blend.y = (GLfloat) 0.0f;
+
+
 		std::getline(f, aux);
 	}
 

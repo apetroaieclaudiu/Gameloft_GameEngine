@@ -3,6 +3,7 @@
 #include <map>
 #include "Camera.h"
 #include "SceneObject.h"
+#include "Terrain.h"
 #include "../Utilities/utilities.h"
 
 class sceneManager

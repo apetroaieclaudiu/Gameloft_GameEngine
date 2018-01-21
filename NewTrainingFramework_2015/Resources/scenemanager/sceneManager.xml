@@ -77,6 +77,14 @@
 			</lights>
 		</object>
 		
+		<object id="9">
+			<model>generated</model>
+			<shader>9</shader>
+			<type>terrain</type>
+			<cells>4</cells>
+			<size>1</size>
+			<offsetY>1</offsetY>
+		</object>
 		
 		<object id="8">
 			<model>generated</model>

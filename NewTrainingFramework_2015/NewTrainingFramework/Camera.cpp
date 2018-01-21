@@ -141,3 +141,8 @@ void Camera::rotateOy(int sens)
 	target = Vector3(u.x, u.y, u.z);
 	update();
 }
+
+Vector3&	Camera::getPos()
+{
+	return position;
+}

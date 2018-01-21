@@ -1,18 +1,21 @@
 #pragma once
-#include "../Utilities/utilities.h"
-#include <vector>
+#include "SceneObject.h"
 
-class Terrain
+extern Camera cam;
+
+class Terrain:public SceneObject
 {
-	unsigned int				nr_celule;
+	int							nr_celule;
 	float						dimensiune_celula;
 	float						offsetY;
-	std::vector<Vector2>		coordonate;
+	std::string					model;
+	std::vector<Vertex*>			vertexi;
 	std::vector<unsigned int>	indici;
 
 public:
 	Terrain();
-	Terrain(unsigned int, float, float);
+	Terrain(int, float, float, std::string);
+	void	Draw();
 	~Terrain();
 };
 

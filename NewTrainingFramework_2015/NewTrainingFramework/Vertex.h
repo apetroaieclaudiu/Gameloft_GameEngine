@@ -8,4 +8,5 @@ struct Vertex
 	Vector3 binorm;
 	Vector3 tgt;
 	Vector2 uv;
+	Vector2 uv_blend;
 };
