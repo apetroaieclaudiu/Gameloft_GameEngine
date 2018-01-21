@@ -1,6 +1,7 @@
 ﻿  Terrain.cpp
 c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\terrain.cpp(23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\terrain.cpp(28): warning C4018: '<': signed/unsigned mismatch
-c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\terrain.cpp(45): warning C4018: '<': signed/unsigned mismatch
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\terrain.cpp(30): warning C4018: '<': signed/unsigned mismatch
+c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\newtrainingframework\terrain.cpp(46): warning C4018: '<': signed/unsigned mismatch
   NewTrainingFramework.vcxproj -> C:\Users\Poli\Desktop\Ap_GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
   NewTrainingFramework.vcxproj -> C:\Users\Poli\Desktop\Ap_GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.pdb (Full PDB)

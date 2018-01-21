@@ -25,18 +25,19 @@ Terrain::Terrain(int nr_celule, float dimensiune_celula, float offsetY, std::str
 				vertexi.push_back(coord);
 			}
 
-		for (unsigned int i = 1; i < nr_celule * nr_celule + nr_celule; i++)
+		for (unsigned int i = 0; i < nr_celule; i++)
 		{
-			indici.push_back(i);
-			indici.push_back(i + nr_celule + 1);
-			i++;
+			for (unsigned int j = 0; j < nr_celule; j++)
+			{
+				indici.push_back(i * (nr_celule + 1) + j);
+				
+				indici.push_back((i + 1) * (nr_celule + 1) + j);
+				indici.push_back(i * (nr_celule + 1) + j + 1);
+				indici.push_back(i * (nr_celule + 1) + j + 1);
+				indici.push_back((i + 1) * (nr_celule + 1) + j);
+				indici.push_back((i + 1) * (nr_celule + 1) + j + 1);
 
-			indici.push_back(i);
-			indici.push_back(i + nr_celule);
-
-			indici.push_back(i);
-			indici.push_back(i + nr_celule + 1);
-			i--;
+			}
 		}
 	}
 }
