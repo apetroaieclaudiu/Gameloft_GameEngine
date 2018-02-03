@@ -1,11 +1,7 @@
-﻿  stdafx.cpp
-  TGA.cpp
-  Math.cpp
-c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\utilities\math.cpp(10): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\utilities\math.cpp(104): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poli\desktop\ap_gameengine\newtrainingframework_2015\utilities\math.cpp(208): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
-  esUtil_win.cpp
-  esUtil.cpp
-  esShader.cpp
-  Generating Code...
-  Utilities.vcxproj -> C:\Users\Poli\Desktop\Ap_GameEngine\NewTrainingFramework_2015\\BIN-Nvidia\Utilities.lib
+﻿  Math.cpp
+c:\users\poli\desktop\gameloft\newtrainingframework_2015\utilities\math.h(39): warning C4521: 'Vector2': multiple copy constructors specified
+c:\users\poli\desktop\gameloft\newtrainingframework_2015\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
+c:\users\poli\desktop\gameloft\newtrainingframework_2015\utilities\math.cpp(10): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\gameloft\newtrainingframework_2015\utilities\math.cpp(104): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\poli\desktop\gameloft\newtrainingframework_2015\utilities\math.cpp(208): warning C4244: 'return': conversion from 'double' to 'GLfloat', possible loss of data
+  Utilities.vcxproj -> C:\Users\Poli\Desktop\Gameloft\NewTrainingFramework_2015\\BIN-Nvidia\Utilities.lib

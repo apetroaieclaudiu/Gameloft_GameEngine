@@ -1,4 +1,4 @@
-#include <stdafx.h>
+#include "stdafx.h"
 #include "Shaders.h"
 
 int Shaders::Init(char * fileVertexShader, char * fileFragmentShader)
@@ -23,7 +23,7 @@ int Shaders::Init(char * fileVertexShader, char * fileFragmentShader)
 	matrixUniform = glGetUniformLocation(program, "u_matrix");
 	textureUniform = glGetUniformLocation(program, "u_texture");
 	uvAttribute = glGetAttribLocation(program, "a_uv");
-
+	uvBlendAttribute = glGetAttribLocation(program, "a_uv_blend");
 	return 0;
 }
 

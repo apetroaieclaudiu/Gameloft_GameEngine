@@ -3,7 +3,7 @@
 
 Camera::Camera()
 {
-	position = Vector3(0.0f, 0.0f, -1.0f);
+	position = Vector3(0.0f, 0.0f, 0.1f);
 	target = Vector3(0.0f, 0.0f, 0.0f);
 	up = Vector3(0.0f, 1.0f, 0.0f);
 	moveSpeed = 10.0f;

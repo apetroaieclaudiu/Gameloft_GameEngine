@@ -30,6 +30,7 @@ void Shader::Load()
 	program = esLoadProgram(vertexShader, fragmentShader);
 
 	//finding location of uniforms / attributes
+	heightUniform = glGetUniformLocation(program, "u_height"); //ia locatia variabilei a_posL din shader ca sa modif variabile
 	positionAttribute = glGetAttribLocation(program, "a_posL"); //ia locatia variabilei a_posL din shader ca sa modif variabile
 	matrixUniform = glGetUniformLocation(program, "u_matrix");
 	textureUniform[0] = glGetUniformLocation(program, "u_texture0");
@@ -37,6 +38,7 @@ void Shader::Load()
 	textureUniform[2] = glGetUniformLocation(program, "u_texture2");
 	textureUniform[3] = glGetUniformLocation(program, "u_texture3");
 	uvAttribute = glGetAttribLocation(program, "a_uv");
+	uvBlendAttribute = glGetAttribLocation(program, "a_uv_blend");
 }
 
 void		Shader::setMr(ShaderResource *r)

@@ -9,4 +9,13 @@ struct Vertex
 	Vector3 tgt;
 	Vector2 uv;
 	Vector2 uv_blend;
+public:
+	Vertex(const Vertex &a) :pos(a.pos), norm(a.norm), binorm(a.binorm), tgt(a.tgt), uv(a.uv), uv_blend(a.uv_blend)
+	{
+	}
+	Vertex()
+	{
+
+	}
+	
 };

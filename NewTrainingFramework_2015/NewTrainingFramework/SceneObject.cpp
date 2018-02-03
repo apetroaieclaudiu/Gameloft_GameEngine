@@ -37,6 +37,22 @@ void	SceneObject::addTexture(Texture *tr)
 
 void	SceneObject::Draw()
 {
+	glUseProgram(shader->getId()); //alegem shaderul folosit
+
+	glBindBuffer(GL_ARRAY_BUFFER, model->getVId());
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model->getIId());
+
+	SendCommonData();
+
+	glDrawElements(GL_TRIANGLES, model->indices.size(), GL_UNSIGNED_INT, (void *)0);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void		SceneObject::Update()
+{
 	Matrix m, p;
 	p.SetScale(scale);
 	p = p * m.SetRotationX(rotation.x);
@@ -44,15 +60,13 @@ void	SceneObject::Draw()
 	p = p * m.SetRotationZ(rotation.z);
 	p = p * m.SetTranslation(position);
 	m = p;
-	Matrix mvp = m * cam.getView();
+	mvp = m * cam.getView();
 	Matrix P;
-
 	P.SetPerspective(cam.getFOV(), (GLfloat)Globals::screenWidth / Globals::screenHeight, cam.getNear(), cam.getFar());
 	mvp = mvp * P;
-	glUseProgram(shader->getId()); //alegem shaderul folosit
-
-	glBindBuffer(GL_ARRAY_BUFFER, model->getVId());
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model->getIId());
+}
+void		SceneObject::SendCommonData()
+{
 
 	for (int i = 0; i < textures.size(); i++)
 	{
@@ -60,7 +74,7 @@ void	SceneObject::Draw()
 		{
 			glActiveTexture(GL_TEXTURE0 + i);
 			glBindTexture(GL_TEXTURE_2D, textures.at(i)->getId());
-			glUniform1i(shader->textureUniform[i], 0);
+			glUniform1i(shader->textureUniform[i], i);
 		}
 	}
 	if (shader->positionAttribute != -1)
@@ -75,15 +89,14 @@ void	SceneObject::Draw()
 		glVertexAttribPointer(shader->uvAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(4 * sizeof(Vector3)));
 	}
 
+	if (shader->uvBlendAttribute != -1)
+	{
+		glEnableVertexAttribArray(shader->uvBlendAttribute);
+		glVertexAttribPointer(shader->uvBlendAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(4 * sizeof(Vector3) + sizeof(Vector2)));
+	}
+
 	if (shader->matrixUniform != -1)
 	{
 		glUniformMatrix4fv(shader->matrixUniform, 1, GL_FALSE, (GLfloat *)mvp.m);
 	}
-
-	glDrawElements(GL_TRIANGLES, model->indices.size(), GL_UNSIGNED_INT, (void *)0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	glBindTexture(GL_TEXTURE_2D, 0);
 }
-

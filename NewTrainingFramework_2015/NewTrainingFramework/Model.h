@@ -10,14 +10,16 @@ class Model
 	int							nr_vertex;
 	int							nr_index;
 	int							nr_indici_wired;
+
+public:
 	GLuint						iboId;
 	GLuint						wiredIboId;
 	GLuint						vboId;
-public:
 	std::vector<unsigned int>	indices;
 	std::vector<unsigned int>   windices;
 	std::vector<Vertex>			points;
 	Model();
+	Model(std::vector<Vertex>, std::vector<unsigned int>);
 	~Model();
 	void						Load();
 	void						setMr(ModelResource *);

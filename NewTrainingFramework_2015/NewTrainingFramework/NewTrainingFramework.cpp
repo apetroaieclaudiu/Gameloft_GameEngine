@@ -38,7 +38,7 @@ void Draw(ESContext *esContext)
 
 void Update(ESContext *esContext, float deltaTime)
 {
-
+	sceneManager::getInstance()->Update();
 	contor += deltaTime;
 	if (contor >= 0.05)
 	{

@@ -61,35 +61,49 @@ void	sceneManager::Load()
 	{
 		for (xml_node<> * pTest = pNode->first_node("object"); pTest; pTest = pTest->next_sibling())
 		{
-			if ((strcmp(pTest->first_node("type")->value(), "normal")) == 0)
+			SceneObject *so;
+			if ((strcmp(pTest->first_node("type")->value(), "terrain")) == 0)
 			{
-				SceneObject *s = new SceneObject{ Vector3(atof(pTest->first_node("position")->first_node("x")->value()),
-					atof(pTest->first_node("position")->first_node("y")->value()),
-					atof(pTest->first_node("position")->first_node("z")->value())),
-					Vector3(atof(pTest->first_node("rotation")->first_node("x")->value()),
-						atof(pTest->first_node("rotation")->first_node("y")->value()),
-						atof(pTest->first_node("rotation")->first_node("z")->value())),
-					Vector3(atof(pTest->first_node("scale")->first_node("x")->value()),
-						atof(pTest->first_node("scale")->first_node("y")->value()),
-						atof(pTest->first_node("scale")->first_node("z")->value())),
-					pTest->first_node("depthTest")->value() == "true" ? true : false };
-				unsigned int i = atoi(pTest->first_attribute("id")->value());
-				s->setModel(resourceManager::getInstance()->loadModel(atoi(pTest->first_node("model")->value())));
-				s->setShader(resourceManager::getInstance()->loadShader(atoi(pTest->first_node("shader")->value())));
-				for (xml_node<> *pTex = pTest->first_node("textures")->first_node("texture"); pTex; pTex = pTex->next_sibling())
-				{
-					s->addTexture(resourceManager::getInstance()->loadTexture(atoi(pTex->first_attribute("id")->value())));
-				}
-				objects.insert(pair <unsigned int, SceneObject*>(i, s));
+				Terrain *t = new Terrain(atoi(pTest->first_node("cells")->value()), (float)atof(pTest->first_node("size")->value()), (float)atof(pTest->first_node("offsetY")->value()), pTest->first_node("model")->value());
+				t->setHeight(Vector3(atof(pTest->first_node("inaltimi")->first_node("r")->value()),
+					atof(pTest->first_node("inaltimi")->first_node("g")->value()),
+					atof(pTest->first_node("inaltimi")->first_node("b")->value())));
+				so = (SceneObject*)t;
 			}
-			else if ((strcmp(pTest->first_node("type")->value(), "terrain")) == 0)
+			else if ((strcmp(pTest->first_node("type")->value(), "normal")) == 0)
 			{
-				Terrain	*t = new Terrain{atoi(pTest->first_node("cells")->value()), (float)atof(pTest->first_node("size")->value()), (float)atof(pTest->first_node("offsetY")->value()), pTest->first_node("model")->value() };
-				objects.insert(pair <unsigned int, SceneObject*>(atoi(pTest->first_attribute("id")->value()), t));
+				so = new SceneObject();
 			}
+			so->position = Vector3(atof(pTest->first_node("position")->first_node("x")->value()),
+							atof(pTest->first_node("position")->first_node("y")->value()),
+							atof(pTest->first_node("position")->first_node("z")->value()));
+			so->rotation = Vector3(atof(pTest->first_node("rotation")->first_node("x")->value()),
+							atof(pTest->first_node("rotation")->first_node("y")->value()),
+							atof(pTest->first_node("rotation")->first_node("z")->value()));
+			so->scale = Vector3(atof(pTest->first_node("scale")->first_node("x")->value()),
+							atof(pTest->first_node("scale")->first_node("y")->value()),
+							atof(pTest->first_node("scale")->first_node("z")->value()));
+			so->depthTest = pTest->first_node("depthTest")->value() == "true" ? true : false;
+			unsigned int i = atoi(pTest->first_attribute("id")->value());
+			if (strcmp(pTest->first_node("model")->value(),"generated")!=0)
+				so->setModel(resourceManager::getInstance()->loadModel(atoi(pTest->first_node("model")->value())));
+			
+			so->setShader(resourceManager::getInstance()->loadShader(atoi(pTest->first_node("shader")->value())));
+			for (xml_node<> *pTex = pTest->first_node("textures")->first_node("texture"); pTex; pTex = pTex->next_sibling())
+			{
+				so->addTexture(resourceManager::getInstance()->loadTexture(atoi(pTex->first_attribute("id")->value())));
+			}
+			objects.insert(pair <unsigned int, SceneObject*>(i, so));
 		}
 	}
 	theFile.close();
+}
+
+void sceneManager::Update()
+{
+	for (std::map<unsigned int, SceneObject*>::iterator it = objects.begin(); it != objects.end(); ++it)
+		it->second->Update();
+
 }
 
 void	sceneManager::Draw()
@@ -112,3 +126,38 @@ sceneManager::~sceneManager()
 {
 	spInstance = NULL;
 }
+
+//
+//if ((strcmp(pTest->first_node("type")->value(), "normal")) == 0)
+//{
+//	SceneObject *s = new SceneObject{ Vector3(atof(pTest->first_node("position")->first_node("x")->value()),
+//		atof(pTest->first_node("position")->first_node("y")->value()),
+//		atof(pTest->first_node("position")->first_node("z")->value())),
+//		Vector3(atof(pTest->first_node("rotation")->first_node("x")->value()),
+//			atof(pTest->first_node("rotation")->first_node("y")->value()),
+//			atof(pTest->first_node("rotation")->first_node("z")->value())),
+//		Vector3(atof(pTest->first_node("scale")->first_node("x")->value()),
+//			atof(pTest->first_node("scale")->first_node("y")->value()),
+//			atof(pTest->first_node("scale")->first_node("z")->value())),
+//		pTest->first_node("depthTest")->value() == "true" ? true : false };
+//	unsigned int i = atoi(pTest->first_attribute("id")->value());
+//	s->setModel(resourceManager::getInstance()->loadModel(atoi(pTest->first_node("model")->value())));
+//	s->setShader(resourceManager::getInstance()->loadShader(atoi(pTest->first_node("shader")->value())));
+//	for (xml_node<> *pTex = pTest->first_node("textures")->first_node("texture"); pTex; pTex = pTex->next_sibling())
+//	{
+//		s->addTexture(resourceManager::getInstance()->loadTexture(atoi(pTex->first_attribute("id")->value())));
+//	}
+//	objects.insert(pair <unsigned int, SceneObject*>(i, s));
+//}
+//else if ((strcmp(pTest->first_node("type")->value(), "terrain")) == 0)
+//{
+//	SceneObject *s = new Terrain{ atoi(pTest->first_node("cells")->value()), (float)atof(pTest->first_node("size")->value()), (float)atof(pTest->first_node("offsetY")->value()), pTest->first_node("model")->value() };
+//
+//	unsigned int i = atoi(pTest->first_attribute("id")->value());
+//	s->setShader(resourceManager::getInstance()->loadShader(atoi(pTest->first_node("shader")->value())));
+//	for (xml_node<> *pTex = pTest->first_node("textures")->first_node("texture"); pTex; pTex = pTex->next_sibling())
+//	{
+//		s->addTexture(resourceManager::getInstance()->loadTexture(atoi(pTex->first_attribute("id")->value())));
+//	}
+//	objects.insert(pair <unsigned int, SceneObject*>(atoi(pTest->first_attribute("id")->value()), s));
+//}

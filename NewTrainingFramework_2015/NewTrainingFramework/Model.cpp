@@ -190,3 +190,9 @@ GLuint		Model::getIId()
 {
 	return iboId;
 }
+
+Model::Model(std::vector<Vertex> vert, std::vector<unsigned int> ind)
+{
+	points = vert;
+	indices = ind;
+}

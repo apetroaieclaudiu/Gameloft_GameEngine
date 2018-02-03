@@ -11,6 +11,7 @@ public:
 	GLint	matrixUniform;
 	GLint	textureUniform;
 	GLint	uvAttribute;
+	GLint	uvBlendAttribute;
 	int		id;
 
 	int Init(char * fileVertexShader, char * fileFragmentShader);
