@@ -2,6 +2,7 @@
 #include "SceneObject.h"
 #include "Globals.h"
 #include "../Utilities/utilities.h"
+#include "sceneManager.h"
 
 using namespace std;
 
@@ -53,7 +54,7 @@ void	SceneObject::Draw()
 
 void		SceneObject::Update()
 {
-	Matrix m, p;
+	Matrix p;
 	p.SetScale(scale);
 	p = p * m.SetRotationX(rotation.x);
 	p = p * m.SetRotationY(rotation.y);
@@ -72,15 +73,52 @@ void		SceneObject::SendCommonData()
 	{
 		if (shader->textureUniform[i] != -1)
 		{
-			glActiveTexture(GL_TEXTURE0 + i);
-			glBindTexture(GL_TEXTURE_2D, textures.at(i)->getId());
-			glUniform1i(shader->textureUniform[i], i);
+			for (int i = 0; i < textures.size(); i++)
+			{
+				glActiveTexture(GL_TEXTURE0 + i);
+				glBindTexture(GL_TEXTURE_2D, textures.at(i)->getId());
+				glUniform1i(shader->textureUniform[i], i);
+			}
 		}
 	}
 	if (shader->positionAttribute != -1)
 	{
 		glEnableVertexAttribArray(shader->positionAttribute);
 		glVertexAttribPointer(shader->positionAttribute, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+	}
+	if (shader->skyboxUniform != -1)
+	{
+		for (int i = 0; i < textures.size(); i++)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			glBindTexture(GL_TEXTURE_CUBE_MAP, textures.at(i)->getId());
+			glUniform1i(shader->skyboxUniform, i);
+		}
+	}
+
+	if (shader->camUniform != -1)
+	{
+		glUniform3f(shader->camUniform, cam.getPos().x, cam.getPos().y, cam.getPos().z);
+	}
+
+	if (shader->rUniform != -1)
+	{
+		glUniform1f(shader->rUniform, sceneManager::getInstance()->r);
+	}
+	
+	if (shader->RUniform != -1)
+	{
+		glUniform1f(shader->rUniform, sceneManager::getInstance()->R);
+	}
+	
+	if (shader->worldUniform != -1)
+	{
+		glUniformMatrix4fv(shader->worldUniform, 1, GL_FALSE, (GLfloat *)m.m);
+	}
+
+	if (shader->colorUniform != -1)
+	{
+		glUniform3f(shader->colorUniform, sceneManager::getInstance()->color.x, sceneManager::getInstance()->color.y, sceneManager::getInstance()->color.z);
 	}
 
 	if (shader->uvAttribute != -1)

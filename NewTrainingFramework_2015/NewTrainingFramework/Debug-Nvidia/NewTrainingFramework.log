@@ -1,15 +1,11 @@
-﻿  Terrain.cpp
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\utilities\math.h(39): warning C4521: 'Vector2': multiple copy constructors specified
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(23): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(29): warning C4018: '<': signed/unsigned mismatch
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(31): warning C4018: '<': signed/unsigned mismatch
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(66): warning C4018: '<': signed/unsigned mismatch
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(69): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(75): warning C4018: '<': signed/unsigned mismatch
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(78): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(85): warning C4018: '<': signed/unsigned mismatch
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(88): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(94): warning C4018: '<': signed/unsigned mismatch
-c:\users\poli\desktop\gameloft\newtrainingframework_2015\newtrainingframework\terrain.cpp(97): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-  NewTrainingFramework.vcxproj -> C:\Users\Poli\Desktop\Gameloft\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe
+﻿  SkyBox.cpp
+e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(39): warning C4521: 'Vector2': multiple copy constructors specified
+e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
+  SceneObject.cpp
+e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(39): warning C4521: 'Vector2': multiple copy constructors specified
+e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(72): warning C4018: '<': signed/unsigned mismatch
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(76): warning C4018: '<': signed/unsigned mismatch
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(91): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  NewTrainingFramework.vcxproj -> E:\Projects\Game_Engine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe

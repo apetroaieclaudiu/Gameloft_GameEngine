@@ -11,6 +11,7 @@ public:
 	GLint	matrixUniform;
 	GLint	textureUniform;
 	GLint	uvAttribute;
+	GLint	skyboxUniform;
 	GLint	uvBlendAttribute;
 	int		id;
 

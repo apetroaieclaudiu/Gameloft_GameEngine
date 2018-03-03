@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "SceneObject.h"
 #include "Terrain.h"
+#include "SkyBox.h"
 #include "../Utilities/utilities.h"
 
 class sceneManager
@@ -14,6 +15,8 @@ class sceneManager
 	std::map<unsigned int, SceneObject*>				objects;
 	sceneManager();
 public:
+	Vector3												color;
+	float												r, R;
 	~sceneManager();
 	static sceneManager*			getInstance();
 	void							Load();

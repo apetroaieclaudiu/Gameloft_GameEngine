@@ -22,6 +22,7 @@ int Shaders::Init(char * fileVertexShader, char * fileFragmentShader)
 	positionAttribute = glGetAttribLocation(program, "a_posL"); //ia locatia variabilei a_posL din shader ca sa modif variabile
 	matrixUniform = glGetUniformLocation(program, "u_matrix");
 	textureUniform = glGetUniformLocation(program, "u_texture");
+	skyboxUniform = glGetUniformLocation(program, "u_cube_texture");
 	uvAttribute = glGetAttribLocation(program, "a_uv");
 	uvBlendAttribute = glGetAttribLocation(program, "a_uv_blend");
 	return 0;

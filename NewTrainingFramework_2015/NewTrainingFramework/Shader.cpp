@@ -37,7 +37,13 @@ void Shader::Load()
 	textureUniform[1] = glGetUniformLocation(program, "u_texture1");
 	textureUniform[2] = glGetUniformLocation(program, "u_texture2");
 	textureUniform[3] = glGetUniformLocation(program, "u_texture3");
+	skyboxUniform = glGetUniformLocation(program, "u_cube_texture");
 	uvAttribute = glGetAttribLocation(program, "a_uv");
+	camUniform = glGetUniformLocation(program, "u_cam");
+	rUniform = glGetUniformLocation(program, "u_r");
+	worldUniform = glGetUniformLocation(program, "u_world");
+	RUniform = glGetUniformLocation(program, "u_R");
+	colorUniform = glGetUniformLocation(program, "u_color");
 	uvBlendAttribute = glGetAttribLocation(program, "a_uv_blend");
 }
 

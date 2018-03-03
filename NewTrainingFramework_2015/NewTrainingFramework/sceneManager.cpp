@@ -11,6 +11,8 @@
 using namespace rapidxml;
 using namespace std;
 
+extern Camera cam;
+
 sceneManager* sceneManager::spInstance = NULL;
 
 sceneManager::sceneManager()
@@ -74,9 +76,14 @@ void	sceneManager::Load()
 			{
 				so = new SceneObject();
 			}
+			else if ((strcmp(pTest->first_node("type")->value(), "SkyBox")) == 0)
+			{
+				SkyBox *s = new SkyBox();
+				so = (SceneObject*)s;
+			}
 			so->position = Vector3(atof(pTest->first_node("position")->first_node("x")->value()),
-							atof(pTest->first_node("position")->first_node("y")->value()),
-							atof(pTest->first_node("position")->first_node("z")->value()));
+				atof(pTest->first_node("position")->first_node("y")->value()),
+				atof(pTest->first_node("position")->first_node("z")->value()));
 			so->rotation = Vector3(atof(pTest->first_node("rotation")->first_node("x")->value()),
 							atof(pTest->first_node("rotation")->first_node("y")->value()),
 							atof(pTest->first_node("rotation")->first_node("z")->value()));
@@ -96,6 +103,13 @@ void	sceneManager::Load()
 			objects.insert(pair <unsigned int, SceneObject*>(i, so));
 		}
 	}
+	xml_node<> * pNode = root_node->first_node("fog");
+	color = Vector3(atof(pNode->first_node("color")->first_node("r")->value()), atof(pNode->first_node("color")->first_node("g")->value()), atof(pNode->first_node("color")->first_node("b")->value()));
+	r = atof(pNode->first_node("raza_mica")->value());
+	R = atof(pNode->first_node("raza_mare")->value());
+
+
+
 	theFile.close();
 }
 

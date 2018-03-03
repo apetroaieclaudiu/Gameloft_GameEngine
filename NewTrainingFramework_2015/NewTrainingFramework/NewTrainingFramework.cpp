@@ -7,13 +7,15 @@
 #include "Shaders.h"
 #include <conio.h>
 #include "Globals.h" // if you use STL, please include this line AFTER all other include
+#include "fmod.hpp"
 
 Camera	cam;
 float	contor = 0;
 bool	wired = false;
 resourceManager* res = resourceManager::getInstance();
 sceneManager*    scn = sceneManager::getInstance();
-
+FMOD::System *fmodSystem;
+FMOD::Sound* sound;
 
 int Init(ESContext *esContext)
 {
@@ -25,6 +27,12 @@ int Init(ESContext *esContext)
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glEnable(GL_DEPTH_TEST);
 
+
+
+	if (FMOD::System_Create(&fmodSystem) != FMOD_OK) { //nu avem sunete, vom afisa un mesaj de eroare 
+	} else 
+		fmodSystem->init(36, FMOD_INIT_NORMAL, NULL);//initializat la 36 de canale
+	fmodSystem->createSound("../Resources/Sounds/Mai.wav" , FMOD_LOOP_OFF, 0, &sound);
 	return 0;
 }
 
@@ -57,6 +65,7 @@ void Key(ESContext *esContext, unsigned char key, bool bIsPressed)
 		switch (key)
 		{
 		case 'W':
+			fmodSystem->playSound(sound, 0, false, 0);
 			cam.moveOz(-1);
 			break;
 		case 'S':

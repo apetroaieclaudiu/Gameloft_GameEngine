@@ -13,6 +13,7 @@ protected:
 
 
 public:
+	Matrix m;
 	SceneObject(Vector3, Vector3, Vector3, bool);
 	SceneObject();
 	virtual						~SceneObject();

@@ -51,17 +51,17 @@
 			<position><!-- translatia -->
 				<x>0</x>
 				<y>0</y>
-				<z>0</z>
+				<z>-20</z>
 			</position>
 			<rotation>
-				<x>0.5</x>
-				<y>1.4</y>
-				<z>1</z>
+				<x>0</x>
+				<y>1.57</y>
+				<z>0</z>
 			</rotation>
 			<scale>
-				<x>0.1</x>
-				<y>0.1</y>
-				<z>0.1</z>
+				<x>0.05</x>
+				<y>0.05</y>
+				<z>0.05</z>
 			</scale>
 			<selfRotateSpeed>0.1</selfRotateSpeed>
 			<followingCamera>
@@ -77,7 +77,33 @@
 			</lights>
 		</object>
 
-		
+		<object id="11">
+			<model>11</model><!-- id model -->
+			<shader>13</shader><!-- id shader -->
+			<type>SkyBox</type>
+			<depthTest>true</depthTest>
+			<blend>true</blend>
+			<name>SkyBox</name><!-- optional -->
+			<textures>
+				<texture id="12"/>
+			</textures>
+			<position>
+				<x>0.0</x>
+				<y>50.0</y>
+				<z>0.0</z>
+			</position>
+			<rotation>
+				<x>0.0</x>
+				<y>0.0</y>
+				<z>3.14159265359</z>
+			</rotation>
+			<scale>
+				<x>100.0</x>
+				<y>100.0</y>
+				<z>100.0</z>
+			</scale>
+			<depthTest>false</depthTest>
+		</object>
 		
 		<object id="9">
 			<model>generated</model>
@@ -94,7 +120,7 @@
 			</textures>
 			<position>
 				<x>0.0</x>
-				<y>0.0</y>
+				<y>-5.0</y>
 				<z>0.0</z>
 			</position>
 			<rotation>
@@ -145,6 +171,16 @@
 			<shininess>0.3</shininess>
 		</light>
 	</lights>
+	
+	<fog>
+		<color>
+			<r>64</r>
+			<g>76</g>
+			<b>90</b>
+		</color>
+		<raza_mica>30</raza_mica>
+		<raza_mare>50</raza_mare>
+	</fog>
 	
 	<debugSettings>
 		<objectAxes>

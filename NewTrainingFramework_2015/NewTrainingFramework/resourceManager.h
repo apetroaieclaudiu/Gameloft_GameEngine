@@ -7,6 +7,7 @@
 #include "Model.h"
 #include "Texture.h"
 #include "Shader.h"
+#include "fmod.h"
 
 class resourceManager
 {
