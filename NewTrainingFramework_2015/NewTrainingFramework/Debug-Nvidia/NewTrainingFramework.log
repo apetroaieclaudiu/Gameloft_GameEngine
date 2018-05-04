@@ -1,11 +1,67 @@
-﻿  SkyBox.cpp
+﻿  sceneManager.cpp
+e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(39): warning C4521: 'Vector2': multiple copy constructors specified
+e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(37): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(38): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(39): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(47): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(46): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(45): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(50): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(49): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(48): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(53): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(52): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(51): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(73): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(72): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(71): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(87): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(91): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(90): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(89): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(94): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(93): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(92): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(97): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(96): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(95): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(119): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(120): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(121): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(122): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(123): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(124): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(125): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(130): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(131): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(132): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(133): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(138): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(139): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(143): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(148): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(149): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(150): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\scenemanager.cpp(152): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Shader.cpp
 e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(39): warning C4521: 'Vector2': multiple copy constructors specified
 e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
   SceneObject.cpp
 e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(39): warning C4521: 'Vector2': multiple copy constructors specified
 e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
-e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(72): warning C4018: '<': signed/unsigned mismatch
-e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(76): warning C4018: '<': signed/unsigned mismatch
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(71): warning C4018: '<': signed/unsigned mismatch
+e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(75): warning C4018: '<': signed/unsigned mismatch
 e:\projects\game_engine\newtrainingframework_2015\newtrainingframework\sceneobject.cpp(91): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
+  Compiling...
+  resourceManager.cpp
+e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(39): warning C4521: 'Vector2': multiple copy constructors specified
+e:\projects\game_engine\newtrainingframework_2015\utilities\math.h(77): warning C4521: 'Vector3': multiple copy constructors specified
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Terrain.cpp
+  SkyBox.cpp
+  NewTrainingFramework.cpp
+  Fire.cpp
   NewTrainingFramework.vcxproj -> E:\Projects\Game_Engine\NewTrainingFramework_2015\\BIN-Nvidia\NewTrainingFramework.exe

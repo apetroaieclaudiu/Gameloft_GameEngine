@@ -45,6 +45,19 @@ void Shader::Load()
 	RUniform = glGetUniformLocation(program, "u_R");
 	colorUniform = glGetUniformLocation(program, "u_color");
 	uvBlendAttribute = glGetAttribLocation(program, "a_uv_blend");
+	uTimeUniform = glGetUniformLocation(program, "u_time");
+	dispMaxUniform = glGetUniformLocation(program, "u_dispMax");
+	ambUniform = glGetUniformLocation(program, "c_amb");
+	normAttribute = glGetAttribLocation(program, "a_norm");
+	diffColorUniform = glGetUniformLocation(program, "c_luminaDiff");
+	diffDirectionUniform = glGetUniformLocation(program, "L");
+	ratioUniform = glGetUniformLocation(program, "ratio");
+	specColorUniform = glGetUniformLocation(program, "c_luminaSpec");
+	specPowerUniform = glGetUniformLocation(program, "SpecPower");
+	spotLightOpeningUniform = glGetUniformLocation(program, "u_spot_pos");
+	spotLightPositionUniform = glGetUniformLocation(program, "u_spot_opening");
+	lightTypesUniform = glGetUniformLocation(program, "u_lights_type");
+	spotLightAttenuation = glGetUniformLocation(program, "u_spot_attenuation");
 }
 
 void		Shader::setMr(ShaderResource *r)

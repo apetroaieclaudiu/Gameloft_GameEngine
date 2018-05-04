@@ -8,7 +8,9 @@
 #include <conio.h>
 #include "Globals.h" // if you use STL, please include this line AFTER all other include
 #include "fmod.hpp"
+#include <time.h>
 
+float	uTime = 0;
 Camera	cam;
 float	contor = 0;
 bool	wired = false;
@@ -48,6 +50,11 @@ void Update(ESContext *esContext, float deltaTime)
 {
 	sceneManager::getInstance()->Update();
 	contor += deltaTime;
+	uTime += deltaTime / 2.5f;
+	if (uTime > 1)
+	{
+		uTime -= 1;
+	}
 	if (contor >= 0.05)
 	{
 		contor -= 0.05;

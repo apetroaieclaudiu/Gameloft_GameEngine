@@ -68,7 +68,6 @@ void		SceneObject::Update()
 }
 void		SceneObject::SendCommonData()
 {
-
 	for (int i = 0; i < textures.size(); i++)
 	{
 		if (shader->textureUniform[i] != -1)
@@ -81,6 +80,7 @@ void		SceneObject::SendCommonData()
 			}
 		}
 	}
+
 	if (shader->positionAttribute != -1)
 	{
 		glEnableVertexAttribArray(shader->positionAttribute);
@@ -105,12 +105,12 @@ void		SceneObject::SendCommonData()
 	{
 		glUniform1f(shader->rUniform, sceneManager::getInstance()->r);
 	}
-	
+
 	if (shader->RUniform != -1)
 	{
 		glUniform1f(shader->rUniform, sceneManager::getInstance()->R);
 	}
-	
+
 	if (shader->worldUniform != -1)
 	{
 		glUniformMatrix4fv(shader->worldUniform, 1, GL_FALSE, (GLfloat *)m.m);
@@ -121,10 +121,35 @@ void		SceneObject::SendCommonData()
 		glUniform3f(shader->colorUniform, sceneManager::getInstance()->color.x, sceneManager::getInstance()->color.y, sceneManager::getInstance()->color.z);
 	}
 
+	if (shader->ambUniform != -1)
+	{
+		glUniform3f(shader->ambUniform, sceneManager::getInstance()->ambientalColor.x, sceneManager::getInstance()->ambientalColor.y, sceneManager::getInstance()->ambientalColor.z);
+	}
+
 	if (shader->uvAttribute != -1)
 	{
 		glEnableVertexAttribArray(shader->uvAttribute);
 		glVertexAttribPointer(shader->uvAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(4 * sizeof(Vector3)));
+	}
+
+	if (shader->diffColorUniform != -1)
+	{
+		glUniform3f(shader->diffColorUniform, sceneManager::getInstance()->diffColor.x, sceneManager::getInstance()->diffColor.y, sceneManager::getInstance()->diffColor.z);
+	}
+
+	if (shader->ratioUniform != -1)
+	{
+		glUniform1f(shader->ratioUniform, sceneManager::getInstance()->ratio);
+	}
+
+	if (shader->diffDirectionUniform != -1)
+	{
+		glUniform3f(shader->diffDirectionUniform, sceneManager::getInstance()->diffDirection.x, sceneManager::getInstance()->diffDirection.y, sceneManager::getInstance()->diffDirection.z);
+	}
+	if (shader->normAttribute != -1)
+	{
+		glEnableVertexAttribArray(shader->normAttribute);
+		glVertexAttribPointer(shader->normAttribute, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(sizeof(Vector3)));
 	}
 
 	if (shader->uvBlendAttribute != -1)
@@ -133,6 +158,36 @@ void		SceneObject::SendCommonData()
 		glVertexAttribPointer(shader->uvBlendAttribute, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)(4 * sizeof(Vector3) + sizeof(Vector2)));
 	}
 
+	if (shader->specColorUniform != -1)
+	{
+		glUniform3f(shader->specColorUniform, sceneManager::getInstance()->specColor.x, sceneManager::getInstance()->specColor.y, sceneManager::getInstance()->specColor.z);
+	}
+
+	if (shader->specPowerUniform != -1)
+	{
+		glUniform1f(shader->specPowerUniform, sceneManager::getInstance()->specPower);
+	}
+
+	if (shader->spotLightOpeningUniform != -1)
+	{
+		glUniform1f(shader->spotLightOpeningUniform, sceneManager::getInstance()->spotLightOpening);
+	}
+
+	if (shader->spotLightPositionUniform != -1)
+	{
+		glUniform3f(shader->spotLightPositionUniform, sceneManager::getInstance()->spotLightPosition.x, sceneManager::getInstance()->spotLightPosition.y, sceneManager::getInstance()->spotLightPosition.z);
+	}
+
+
+	if (shader->spotLightAttenuation != -1)
+	{
+		glUniform1f(shader->spotLightAttenuation, sceneManager::getInstance()->spotLightAttenuation);
+	}
+
+	if (shader->lightTypesUniform != -1)
+	{
+		glUniform3f(shader->lightTypesUniform, sceneManager::getInstance()->lightTypes.x, sceneManager::getInstance()->lightTypes.y, sceneManager::getInstance()->lightTypes.z);
+	}
 	if (shader->matrixUniform != -1)
 	{
 		glUniformMatrix4fv(shader->matrixUniform, 1, GL_FALSE, (GLfloat *)mvp.m);

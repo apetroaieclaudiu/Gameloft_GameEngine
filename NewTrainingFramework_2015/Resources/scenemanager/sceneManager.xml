@@ -140,6 +140,37 @@
 				<b>-1</b> 
 			</inaltimi>
 		</object>
+		
+		<object id="20">
+			<model>20</model><!-- id model -->
+			<shader>25</shader><!-- id shader -->
+			<type>Fire</type>
+			<depthTest>true</depthTest>
+			<blend>true</blend>
+			<name>Fire</name><!-- optional -->
+			<textures>
+				<texture id="22"/>
+				<texture id="24"/>
+				<texture id = "28"/>
+			</textures>
+			<position>
+				<x>-20.0</x>
+				<y>-10.0</y>
+				<z>-15.0</z>
+			</position>
+			<rotation>
+				<x>0.0</x>
+				<y>0.0</y>
+				<z>0.0</z>
+			</rotation>
+			<scale>
+				<x>1.0</x>
+				<y>1.0</y>
+				<z>1.0</z>
+			</scale>
+			<dispMax>0.1</dispMax>
+			<depthTest>false</depthTest>
+		</object>
 	</objects>
 	
 
@@ -153,7 +184,7 @@
 	</ambientalLight>
 	
 	<lights>
-		<light id="1">
+<!--		<light id="1">
 			<associatedObject>2</associatedObject>
 			<diffuseColor>
 				<r>1.0</r>
@@ -170,8 +201,98 @@
 			<diffCoef>1.0</diffCoef>
 			<shininess>0.3</shininess>
 		</light>
+		-->
+		<!--
+		<light id="30" type="Ambientala">
+			<color>
+				<r>255</r>
+				<g>255</g>
+				<b>255</b>
+			</color>
+		</light>
+		<light id="50" type="Difuza">
+			<color>
+				<r>255</r>
+				<g>255</g>
+				<b>255</b>
+			</color>
+			<direction>
+				<x>5</x>
+				<y>0</y>
+				<z>-20</z>
+			</direction>
+		</light>
+		<light id="100" type = "Speculara">
+			<color>
+				<r>255</r>
+				<g>255</g>
+				<b>255</b>
+			</color>
+			<power>0.5</power>
+		</light>
+		-->
+		<light id = "101" type = "Spotlight">
+			<Speculara>
+				<color>
+					<r>255</r>
+					<g>255</g>
+					<b>255</b>
+				</color>
+				<power>0.5</power>
+			</Speculara>
+			<Difuza>
+				<color>
+					<r>255</r>
+					<g>255</g>
+					<b>255</b>
+				</color>
+				<direction>
+					<x>5</x>
+					<y>0</y>
+					<z>-20</z>
+				</direction>
+			</Difuza>
+			<position>
+				<x>10</x>
+				<y>10</y>
+				<z>-10</z>
+			</position>
+			<attenuation>0.7 </attenuation>
+			<deschidere>45</deschidere>			
+		</light>
+		
+		<light id = "101" type = "Directional">
+			<Speculara>
+				<color>
+					<r>255</r>
+					<g>255</g>
+					<b>255</b>
+				</color>
+				<power>0.5</power>
+			</Speculara>
+			<Difuza>
+				<color>
+					<r>255</r>
+					<g>255</g>
+					<b>255</b>
+				</color>
+				<direction>
+					<x>5</x>
+					<y>0</y>
+					<z>-20</z>
+				</direction>
+			</Difuza>
+		</light>
+		
+		<light type = "Ambientala">
+				<color>
+					<r>255</r>
+					<g>255</g>
+					<b>255</b>
+				</color>
+		</light>
 	</lights>
-	
+	<ratio>0.3</ratio>
 	<fog>
 		<color>
 			<r>64</r>

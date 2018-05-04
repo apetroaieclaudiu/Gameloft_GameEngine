@@ -1,6 +1,7 @@
 attribute vec3 a_posL;
 attribute vec2 a_uv;
 attribute vec2 a_uv_blend;
+attribute vec3 a_norm;
 
 uniform mat4 u_matrix;
 uniform vec3 u_height;
@@ -10,6 +11,7 @@ uniform mat4 u_world;
 varying vec2 v_uv;
 varying vec2 v_uv_blend;
 varying vec4 v_pos;
+varying vec3 N;
 
 void main()
 {
@@ -24,5 +26,6 @@ gl_Position = u_matrix * vec4(pos_nou, 1.0);
 v_pos = u_world * vec4(a_posL, 1.0);
 v_uv_blend = a_uv_blend;
 v_uv = a_uv;
+N = a_norm;
 }
    

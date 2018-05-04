@@ -19,6 +19,20 @@ public:
 	GLint	rUniform;
 	GLint	RUniform;
 	GLint	uvBlendAttribute;
+	GLint	uTimeUniform;
+	GLint	dispMaxUniform;
+	GLint	normAttribute;
+	GLint	ambUniform;
+	GLint	diffColorUniform;
+	GLint	diffDirectionUniform;
+	GLint	ratioUniform;
+	GLint	specColorUniform;
+	GLint	specPowerUniform;
+	GLint	spotLightPositionUniform;
+	GLint	spotLightOpeningUniform;
+	GLint	lightTypesUniform;
+	GLint	spotLightAttenuation;
+
 	void			Load();
 	void			setMr(ShaderResource *);
 	int Init(char * fileVertexShader, char * fileFragmentShader);

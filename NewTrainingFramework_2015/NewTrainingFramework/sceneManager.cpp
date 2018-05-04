@@ -22,6 +22,7 @@ sceneManager::sceneManager()
 
 void	sceneManager::Load()
 {
+	lightTypes = Vector3(0.0, 0.0, 0.0);
 	xml_document<> doc;
 	xml_node<> * root_node;
 	// Read the xml file into a vector
@@ -81,6 +82,10 @@ void	sceneManager::Load()
 				SkyBox *s = new SkyBox();
 				so = (SceneObject*)s;
 			}
+			else if ((strcmp(pTest->first_node("type")->value(), "Fire")) == 0)
+			{
+				so = new Fire(atof(pTest->first_node("dispMax")->value()));
+			}
 			so->position = Vector3(atof(pTest->first_node("position")->first_node("x")->value()),
 				atof(pTest->first_node("position")->first_node("y")->value()),
 				atof(pTest->first_node("position")->first_node("z")->value()));
@@ -103,11 +108,49 @@ void	sceneManager::Load()
 			objects.insert(pair <unsigned int, SceneObject*>(i, so));
 		}
 	}
+
+	for (xml_node<> * pNode = root_node->first_node("lights"); pNode; pNode = pNode->next_sibling())
+	{
+		for (xml_node<> * pTest = pNode->first_node("light"); pTest; pTest = pTest->next_sibling())
+		{
+			if (strcmp(pTest->first_attribute("type")->value(), "Spotlight") == 0)
+			{
+				lightTypes.z = 1.0;
+				diffColor = Vector3(atof(pTest->first_node("Difuza")->first_node("color")->first_node("r")->value()), atof(pTest->first_node("Difuza")->first_node("color")->first_node("g")->value()), atof(pTest->first_node("Difuza")->first_node("color")->first_node("b")->value()));
+				diffDirection = Vector3(atof(pTest->first_node("Difuza")->first_node("direction")->first_node("x")->value()), atof(pTest->first_node("Difuza")->first_node("direction")->first_node("y")->value()), atof(pTest->first_node("Difuza")->first_node("direction")->first_node("z")->value()));
+				specColor = Vector3(atof(pTest->first_node("Speculara")->first_node("color")->first_node("r")->value()), atof(pTest->first_node("Speculara")->first_node("color")->first_node("g")->value()), atof(pTest->first_node("Speculara")->first_node("color")->first_node("b")->value()));
+				specPower = atof(pTest->first_node("Speculara")->first_node("power")->value());
+				spotLightOpening = atof(pTest->first_node("deschidere")->value());
+				spotLightPosition = Vector3(atof(pTest->first_node("position")->first_node("x")->value()), atof(pTest->first_node("position")->first_node("y")->value()), atof(pTest->first_node("position")->first_node("z")->value()));
+				spotLightAttenuation = atof(pTest->first_node("attenuation")->value());
+			}
+			if (strcmp(pTest->first_attribute("type")->value(), "Directional") == 0)
+			{
+				lightTypes.y = 1.0;
+				diffColor = Vector3(atof(pTest->first_node("Difuza")->first_node("color")->first_node("r")->value()), atof(pTest->first_node("Difuza")->first_node("color")->first_node("g")->value()), atof(pTest->first_node("Difuza")->first_node("color")->first_node("b")->value()));
+				diffDirection = Vector3(atof(pTest->first_node("Difuza")->first_node("direction")->first_node("x")->value()), atof(pTest->first_node("Difuza")->first_node("direction")->first_node("y")->value()), atof(pTest->first_node("Difuza")->first_node("direction")->first_node("z")->value()));
+				specColor = Vector3(atof(pTest->first_node("Speculara")->first_node("color")->first_node("r")->value()), atof(pTest->first_node("Speculara")->first_node("color")->first_node("g")->value()), atof(pTest->first_node("Speculara")->first_node("color")->first_node("b")->value()));
+				specPower = atof(pTest->first_node("Speculara")->first_node("power")->value());
+			}	
+			if (strcmp(pTest->first_attribute("type")->value(), "Point") == 0)
+			{
+				lightTypes.x = 1.0;
+				diffColor = Vector3(atof(pTest->first_node("Difuza")->first_node("color")->first_node("r")->value()), atof(pTest->first_node("Difuza")->first_node("color")->first_node("g")->value()), atof(pTest->first_node("Difuza")->first_node("color")->first_node("b")->value()));
+				diffDirection = Vector3(atof(pTest->first_node("Difuza")->first_node("direction")->first_node("x")->value()), atof(pTest->first_node("Difuza")->first_node("direction")->first_node("y")->value()), atof(pTest->first_node("Difuza")->first_node("direction")->first_node("z")->value()));
+			}
+			if (strcmp(pTest->first_attribute("type")->value(), "Ambientala") == 0)
+			{
+				ambientalColor = Vector3(atof(pTest->first_node("color")->first_node("r")->value()), atof(pTest->first_node("color")->first_node("g")->value()), atof(pTest->first_node("color")->first_node("b")->value()));
+			}
+		}
+	}
 	xml_node<> * pNode = root_node->first_node("fog");
 	color = Vector3(atof(pNode->first_node("color")->first_node("r")->value()), atof(pNode->first_node("color")->first_node("g")->value()), atof(pNode->first_node("color")->first_node("b")->value()));
 	r = atof(pNode->first_node("raza_mica")->value());
 	R = atof(pNode->first_node("raza_mare")->value());
-
+	pNode = root_node->first_node("ratio");
+	ratio = atof(pNode->value());
+	
 
 
 	theFile.close();

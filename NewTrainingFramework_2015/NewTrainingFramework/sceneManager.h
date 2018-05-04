@@ -5,6 +5,7 @@
 #include "SceneObject.h"
 #include "Terrain.h"
 #include "SkyBox.h"
+#include "Fire.h"
 #include "../Utilities/utilities.h"
 
 class sceneManager
@@ -13,9 +14,20 @@ class sceneManager
 	Vector3												backgroundColor;
 	std::map<unsigned int, Camera*>						cameras;
 	std::map<unsigned int, SceneObject*>				objects;
-	sceneManager();
+	sceneManager();	
 public:
 	Vector3												color;
+	Vector3												ambientalColor;
+	Vector3												diffColor;
+	Vector3												diffDirection;
+	Vector3												specColor;
+	Vector3												spotLightPosition;
+	Vector3												lightTypes;
+	Vector3												spotLightDirection;
+	float												spotLightOpening;
+	float												spotLightAttenuation;
+	float												specPower;
+	float												ratio;
 	float												r, R;
 	~sceneManager();
 	static sceneManager*			getInstance();
